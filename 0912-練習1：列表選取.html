@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .container {
+            margin-top: 50PX;
+        }
+
+        td.highlight {
+            background-color: lightblue;
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <table class="table table-bordered col-6">
+                <tr>
+                    <td><input type="checkbox" name="a" id="a" />
+                    </td>
+                    <td>AAA</td>
+                    <td>0900-000-000</td>
+                    <td>AAA@test.com</td>
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="a" id="b" /></td>
+                    <td>BBB</td>
+                    <td>0900-000-000</td>
+                    <td>BBB@test.com</td>
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="a" id="c" /></td>
+                    <td>CCC</td>
+                    <td>0900-000-000</td>
+                    <td>CCC@test.com</td>
+
+                </tr>
+                <tr>
+                    <td><input type="checkbox" name="a" id="d" /></td>
+                    <td>DDD</td>
+                    <td>0900-000-000</td>
+                    <td>DDD@test.com</td>
+
+                </tr>
+
+
+            </table>
+        </div>
+    </div>
+
+    <script>
+ $("#a").click(function(){
+    let isCheck = $("#a").prop("checked")
+    if (isCheck) {
+            $('td:eq(0)').css("background", "lightblue")
+            $('td:eq(1)').css("background", "lightblue")
+            $('td:eq(2)').css("background", "lightblue")
+            $('td:eq(3)').css("background", "lightblue")
+        }else{
+            $('td:eq(0)').css("background", "white")
+            $('td:eq(1)').css("background", "white")
+            $('td:eq(2)').css("background", "white")
+            $('td:eq(3)').css("background", "white")
+        }
+ })
+ $("#b").click(function(){
+    let isCheck = $("#b").prop("checked")
+    if (isCheck) {
+            $('td:eq(4)').css("background", "lightblue")
+            $('td:eq(5)').css("background", "lightblue")
+            $('td:eq(6)').css("background", "lightblue")
+            $('td:eq(7)').css("background", "lightblue")
+        }else{
+            $('td:eq(4)').css("background", "white")
+            $('td:eq(5)').css("background", "white")
+            $('td:eq(6)').css("background", "white")
+            $('td:eq(7)').css("background", "white")
+        }
+ })
+ $("#b").click(function(){
+    let isCheck = $("#b").prop("checked")
+    if (isCheck) {
+            $('td:eq(4)').css("background", "lightblue")
+            $('td:eq(5)').css("background", "lightblue")
+            $('td:eq(6)').css("background", "lightblue")
+            $('td:eq(7)').css("background", "lightblue")
+        }else{
+            $('td:eq(4)').css("background", "white")
+            $('td:eq(5)').css("background", "white")
+            $('td:eq(6)').css("background", "white")
+            $('td:eq(7)').css("background", "white")
+        }
+ })
+ $("#c").click(function(){
+    let isCheck = $("#c").prop("checked")
+    if (isCheck) {
+            $('td:eq(8)').css("background", "lightblue")
+            $('td:eq(9)').css("background", "lightblue")
+            $('td:eq(10)').css("background", "lightblue")
+            $('td:eq(11)').css("background", "lightblue")
+        }else{
+            $('td:eq(8)').css("background", "white")
+            $('td:eq(9)').css("background", "white")
+            $('td:eq(10)').css("background", "white")
+            $('td:eq(11)').css("background", "white")
+        }
+ })
+ $("#d").click(function(){
+    let isCheck = $("#d").prop("checked")
+    if (isCheck) {
+            $('td:eq(12)').css("background", "lightblue")
+            $('td:eq(13)').css("background", "lightblue")
+            $('td:eq(14)').css("background", "lightblue")
+            $('td:eq(15)').css("background", "lightblue")
+        }else{
+            $('td:eq(12)').css("background", "white")
+            $('td:eq(13)').css("background", "white")
+            $('td:eq(14)').css("background", "white")
+            $('td:eq(15)').css("background", "white")
+        }
+ })
+
+        
+        
+        
+    </script>
+</body>
+
+</html>

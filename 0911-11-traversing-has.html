@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <h2>.has()</h2>
+    <div><div class="a1">A1</div></div>
+    <div class="a1">A1</div>
+    <div><div class="a2">A2</div></div>
+    <br>
+
+    <h2>.not()</h2>
+    <span class="b1">B1</span><br>
+    <span class="b2">B2</span><br>
+    <span class="b3">B3</span><br>
+
+    <script>
+        // ●.has()- 選取裡面有 xx的div
+        $("div").has(".a1").css("color", "red");
+
+        // ●.not()- 選取不是 xx 的span
+        $("span").not(".b1").css("color", "red");
+
+    </script>
+</body>
+
+</html>

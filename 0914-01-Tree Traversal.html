@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        *{font-size: 22px;
+        margin: 5px 0;
+        }
+        ul {
+            border: 1px solid black;
+            background-color: rgb(255, 255, 255);
+            width: 100px;
+        }
+    </style>
+</head>
+
+<div class="wrap">
+    ul-level-1
+    <ul class="level-1">
+        <li class="item-1">li-1</li>
+        <li class="item-2">li-2</li>
+        ul-level-2
+        <ul class="level-2">
+            <li class="item-01">li-01</li>
+            <li class="item-02">li-02</li>
+            ul-level-3
+            <ul class="level-3">    
+                <li class="item-001">li-001</li>
+                <li class="item-002">li-002</li>
+                <li class="item-003">li-003</li>
+            </ul>
+            <li class="item-03">li-03</li>
+        </ul>
+        <li class="item-3">li-3</li>
+</div>
+
+<body>
+    <script>
+        // ●.parent()- 往上選取一層
+        // $('.item-003').parent().css("color", "red");
+        // $('.level-3').parent().css("color", "red");
+        // $('.item-003').parent().parent().css("color", "red");
+        // $('.item-003').parent().parent('li').css("color", "red");//無效
+
+        // ●.closest()- 最接近祖先元素
+        // $('.item-03').closest('ul').css("color", "red");
+        // $('.item-03').closest().css("color", "red");//無效
+        // $('.item-03').closest('li').css("color", "red");
+        // $('.item-03').closest('li.item-02').css("color", "red");//無效
+
+        // ●.parents()- 往上選取全部
+        // $('.item-003').parents().css("color", "red");
+
+        // ●.parentsUntil()- 往上選取全部並設定停止的元素
+        // $('.level-3').parentsUntil('.level-1').css("color", "red");
+        // 不包含Until
+
+        // 老師測試版
+        // $('.level-3').parent().find('.item-02').css("color", "red").parent().parent().find('.item-3').css("color", "red");
+
+    </script>
+</body>
+
+</html>

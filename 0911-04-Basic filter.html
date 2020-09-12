@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <h1 class="h">h1</h1>
+    <h2 class="h">h2</h2>
+    <h3 class="h">h3</h3>
+    <h4 class="h">h4</h4>
+    <h5 class="h">h5</h5>
+    <h6 class="h">h6</h6>
+
+    <script>        
+        // ●:even- 選取第偶數個(從0開始計算)
+        $('td:even()').css("background", "orange")
+
+        // ●:odd- 選取第奇數個(從0開始計算)
+        $('td:odd()').css("background", "yellow")
+
+        // ●:eq()- 選取第 n 個(從0開始計算)
+        $('td:eq(6)').css("background", "red")
+
+        // ●:first- 選取第一個
+        $('td:first()').css("background", "lightblue")
+        
+        // ●:last- 選取最後一個
+        $('td:last()').css("background", "blue")
+
+        // ●:gt()- 選取大於第 n 個的(也可以給負數)
+        // $('td:gt(15)').css("background", "blue")
+
+        // ●:lt()- 選取小於第 n 個的(也可以給負數)
+        // $('td:lt(7)').css("background", "blue")
+        
+        // ●:header- 選取 h1~h6
+        $('.h:header').css("background", "lightblue")
+        
+
+
+    </script>
+</body>
+
+</html>

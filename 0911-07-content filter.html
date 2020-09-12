@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        .box,
+        td {
+            border: 1px solid black;
+            width: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h2>:contains</h2>
+    <div class="names">AAA</div>
+    <div class="names">BBB</div>
+    <div class="names">CCC</div>
+    <div class="names"></div>
+    <br>
+    
+
+    <h2>:empty</h2>
+    <table class="table empty">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td>3</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+
+    <h2>:has</h2>
+    <div>abc</div>
+    <div> 
+        <p>def</p>
+    </div>
+    <br>
+
+    <h2><span>:hidden、:visible</h2></span>
+    
+    <div hidden>abc</div>
+    <div>
+        <p>def</p>
+    </div>
+
+
+    <script>
+        // :contains 選取內容包含xx
+        $(".names:contains('AAA')").css("background", "yellow");
+        // $(".names:contains('')").css("background", "yellow");   //為何是全部，不能是空字串????????
+        // $(".names:contains(' ')").css("background", "yellow");   //為何是無，不能是空白字元????????
+
+        // :empty 選取內容為空的元素
+        $(".empty td:empty").css("background", "yellow");
+
+        // :has 包含 xx 元素
+        $("div:has(p)").css("background", "yellow");
+
+        // :hidden- 選取隱藏的 
+        // :visible- 選取看得見的
+        $("div:hidden").show(); //秀出<div hidden>abc</div>
+        // $("div").show(); //秀出<div hidden>abc</div>
+        // $("div:visible").hide();
+        // $("div").hide();
+    </script>
+</body>
+
+</html>

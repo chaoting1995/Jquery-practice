@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+        .box {
+            border: 1px solid black;
+            width: 50px;
+            margin-left: 20px;
+        }
+
+        ul {
+            border: 1px solid black;
+            width: 200px;
+            margin-left: 30px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 有階層，又是div，又是第一個小孩 -->
+
+    <!-- <h3>該百年額米格“蔬菜水果”中第一行的文字顏色</h3> -->
+    <!-- <li>巧克力</li> -->
+    <span>span0</span>
+    <ul>
+        <span>span1</span>
+        <li>芹菜
+            <!-- <span>span1-2</span> -->
+            <div class="box">孫層1</div>
+            <div class="box">孫層2</div>
+            <div class="box">孫層3</div>
+        </li>
+
+        <li>茄子
+            <!-- <li>aaa</li>
+            <li>bbb</li> -->
+            <div class="box">孫層1</div>
+            <div class="box">孫層2</div>
+            <div class="box">孫層3</div>
+        </li>
+
+        <li>蘿蔔</li>
+        <li>大白菜</li>
+        <li>西紅柿</li>
+        <span>span2</span>
+    </ul>
+    <span>span2-1</span>
+
+    <ul>
+        <li>橘子</li>
+        <span>span3</span>
+        <li>香蕉</li>
+        <li>西瓜</li>
+    </ul>
+    <li>這是li</li>
+    <span>span4</span>
+    <script>
+        // 目錄
+        // :first-child- 選取第一個
+        // :last-child- 選取最後一個
+        // :first-of-type- 選取同類第一個
+        // :last-of-type- 選取同類最後一個
+        // :nth-child()- 第 n 個
+        // :nth-last-child()- 倒數第 n 個
+        // :nth-of-type()
+        // :nth-last-of-type()
+        // :only-child- 選取只有一個的
+        // :only-of-type
+    // 小結： 被選元素，其子孫層亦被影響(繼承css效果)
+
+
+// :first-child- 選取第一個
+        // $("ul li:first-child").css("color", "red");
+        // $("ul:first-child").css("color", "red");
+        // $("ul :first-child").css("color", "red");
+        // $("li:first-child").css("color", "red");
+
+        // $("li :first-child").css("color", "red");
+        // $("li :first-of-type").css("color", "red");
+        // 這兩個效果一樣
+
+        // $("span:first-child").css("color", "red");
+
+        // $(":first-child").css("color", "red");
+
+    // 小結： $("ul li:first-child")，即【選取每個母容器ul中，在第一位的li】
+    // 小結： $("li:first-child")，即【選取每個母容器中，在第一位的li】
+    // 小結： $("ul :first-child")，即【選取每個母容器ul中，第一個子元素】
+    // 小結： $(":first-child")，即【選取每個母容器中，第一個子元素】
+
+
+// :last-child- 選取最後一個
+        // $("ul li:last-child").css("color", "red");
+        // $("li :last-child").css("color", "red");
+        // $("ul :last-child").css("color", "red");   //子、孫層都找???????
+
+        // $("ul:last-child").css("color", "red");    //最後一個ul不會亮??????
+        // $("span:last-child").css("color", "red"); //最後一個span不會亮??????
+        // $("li:last-child").css("color", "red");  //最後一個li不會亮??????
+        // $("li").last().css("color", "red");
+
+        // $(":last-child").css("color", "red");  //全亮??????
+
+    // 小結： $("ul li:last-child")，即【選取每個母容器ul中，最後一位的li】
+    // 小結： $("li:last-child")，即【選取每個母容器中，最後一位的li】
+    // 小結： $("ul :last-child")，即【選取每個母容器ul中，最後一個子孫元素】
+    // 小結： $(":last-child")，即【選取每個母容器中，最後一個子元素】
+
+    
+// :first-of-type- 選取同類第一個
+        // $("ul li:first-of-type").css("color", "red");
+        // $("li:first-of-type").css("color", "red");
+        // $("li :first-of-type").css("color", "red");
+        // $("ul :first-of-type").css("color", "red");
+        // $("ul:first-of-type").css("color", "red");
+        
+        // $("li :first-child").css("color", "red");
+        // $("li :first-of-type").css("color", "red");
+        // 這兩個效果一樣
+        
+        // $(":first-of-type").css("color", "red");  //全亮??????
+        
+        // $("span:first-of-type").css("color", "red");
+
+    // 小結： $("ul li:first-of-type")，即【選取每個母容器ul中，同類第一個li】
+    // 小結： $("li:first-of-type")，即【選取每個母容器中，同類第一個li】
+    // 小結： $("ul :first-of-type")，即【選取每個母容器ul中，同類第一個子元素】
+    // 小結： $(":first-of-type")，即【選取每個元素】?【選取每個母容器中，同類第一個子元素】?
+
+
+// :last-of-type- 選取同類第一個
+        // $("ul li:last-of-type").css("color", "red");
+        // $("li:last-of-type").css("color", "red");
+
+        // $("li :last-of-type").css("color", "red");
+
+        // $("ul:last-of-type").css("color", "red");
+        // $("ul :last-of-type").css("color", "red");    //子、孫層都找???????
+
+        // $(":last-of-type").css("color", "red");       //全亮??????
+
+    // 小結： $("ul li:first-of-type")，即【選取每個母容器ul中，同類第一個li】
+    // 小結： $("li:first-of-type")，即【選取每個母容器中，同類第一個li】
+    // 小結： $("ul :first-of-type")，即【選取每個母容器ul中，同類第一個子元素】
+    // 小結： $(":first-of-type")，即【選取每個元素】?【選取每個母容器中，同類第一個子元素】?
+    </script>
+</body>
+
+</html>
