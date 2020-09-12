@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <style>
+        .container {
+            margin-top: 50PX;
+        }
+
         td {
             width: 70px;
             height: 70px;
@@ -62,6 +66,10 @@
         .color-12 {
             background-color: rgb(231, 89, 155);
         }
+
+        .change {
+            background-color: lightblue;
+        }
     </style>
     </style>
 </head>
@@ -77,10 +85,10 @@
                     <td class="box color-04" id="3"></td>
                 </tr>
                 <tr></tr>
-                    <td class="box color-05" id="4"></td>
-                    <td class="box color-06" id="5"></td>
-                    <td class="box color-07" id="6"></td>
-                    <td class="box color-08" id="7"></td>
+                <td class="box color-05" id="4"></td>
+                <td class="box color-06" id="5"></td>
+                <td class="box color-07" id="6"></td>
+                <td class="box color-08" id="7"></td>
                 </tr>
                 <tr>
                     <td class="box color-09" id="8"></td>
@@ -93,7 +101,7 @@
     </div>
 
     <script>
-        // 點擊 div 後讓後面背景顏色都變成 lightblue
+        // 【目標】點擊 div 後讓後面背景顏色都變成 lightblue
 
         // 1.:gt()- 選取大於第 n 個的(也可以給負數)
         // $('td:gt(5)').css("background", "lightblue")
@@ -110,13 +118,29 @@
         // ●:eq()- 選取第 n 個(從0開始計算)
         $("td").click(function () {
             let number = ($(this).attr('id'))
-            if(number==0){
+            if (number == 0) {
                 $('td:eq(0)').css("background", "lightblue");
                 $(`td:gt(${number})`).css("background", "lightblue")
-            }else{
-                $(`td:gt(${number-1})`).css("background", "lightblue")
-            }})
-            
+            } else {
+                $(`td:gt(${number - 1})`).css("background", "lightblue")
+            }
+        })
+
+        // 5.單點toggle效果
+        // $("td").click(function () {
+        //     let number = ($(this).attr('id'))
+        //     if (number == 0) {
+        //         $('td:eq(0)').toggleClass("change");
+        //         $(`td:gt(${number})`).toggleClass("change");
+        //     } else {
+        //         $(`td:gt(${number - 1})`).toggleClass("change");
+        //     }
+        // return false;
+        // })
+
+        // 6.點擊第n個td → 大於第 n 個的變色，且不與toggle衝突
+        // 先放棄QQ
+
     </script>
 </body>
 

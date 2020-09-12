@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .container {
+            margin-top: 50PX;
+        }
+
+        img {
+            width: 70px;
+            height: 70px;
+        }
+
+        body {
+            background-color: lightblue;
+            display: flex;
+            justify-content: center;
+            padding-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="">
+        <form-group>
+            <label for="username">Username</label><br>
+            <input type="text" id="username" name="username">
+        </form-group>
+        <br>
+
+        <form-group>
+            <label for="email">Email</label><br>
+            <input type="email" id="email" name="email">
+        </form-group>
+        <br>
+
+        <form-group>
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password">
+        </form-group>
+        <br>
+        <br>
+
+
+        <button type="submit" value="submit" class="btn btn-primary">Auto Input</button>
+
+        <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+        <br>
+        <br>
+
+    </form>
+    <script>
+ // 【目標】●點擊按鈕之後自動輸入預先設定好的使用者資料
+ $("div").click(function () {
+            $(this).toggleClass('circle-border').siblings().removeClass('circle-border')
+        })
+        
+        $(":text")
+       
+        $(":password")
+
+    </script>
+</body>
+
+</html>

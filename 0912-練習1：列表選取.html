@@ -62,87 +62,102 @@
 
     <script>
 
-// ●點擊 checkbox 後讓整行 highlight
-// ●用 :checkbox 選擇上層元素
+        // ●點擊 checkbox 後讓整行 highlight
+        // ●用 :checkbox 選擇上層元素
 
-// 參考
-// $(":checkbox + label").css("background", "pink")
-        // 希望checkbox旁邊的label改變
 
- $("#a").click(function(){
-    let isCheck = $("#a").prop("checked")
-    if (isCheck) {
-            $('td:eq(0)').css("background", "lightblue")
-            $('td:eq(1)').css("background", "lightblue")
-            $('td:eq(2)').css("background", "lightblue")
-            $('td:eq(3)').css("background", "lightblue")
-        }else{
-            $('td:eq(0)').css("background", "white")
-            $('td:eq(1)').css("background", "white")
-            $('td:eq(2)').css("background", "white")
-            $('td:eq(3)').css("background", "white")
+        // $("#a").click(function () {
+        //     if($("#a").prop("checked"))
+        //     $(":checked").parents("tr").css("background", "lightblue");
+        // })
+        // $(":input").click(function () {
+        //     $(":input").not(':checked').parents("tr").css("background", "white");
+        // })
+        $("#a").click(function () {
+            if($("#a").prop("checked")){
+            $(":checked").parents("tr").css("background", "lightblue");
+            }else{
+        $(":input").click(function () {
+            $(":input").not(':checked').parents("tr").css("background", "white");
         }
- })
- $("#b").click(function(){
-    let isCheck = $("#b").prop("checked")
-    if (isCheck) {
-            $('td:eq(4)').css("background", "lightblue")
-            $('td:eq(5)').css("background", "lightblue")
-            $('td:eq(6)').css("background", "lightblue")
-            $('td:eq(7)').css("background", "lightblue")
-        }else{
-            $('td:eq(4)').css("background", "white")
-            $('td:eq(5)').css("background", "white")
-            $('td:eq(6)').css("background", "white")
-            $('td:eq(7)').css("background", "white")
-        }
- })
- $("#b").click(function(){
-    let isCheck = $("#b").prop("checked")
-    if (isCheck) {
-            $('td:eq(4)').css("background", "lightblue")
-            $('td:eq(5)').css("background", "lightblue")
-            $('td:eq(6)').css("background", "lightblue")
-            $('td:eq(7)').css("background", "lightblue")
-        }else{
-            $('td:eq(4)').css("background", "white")
-            $('td:eq(5)').css("background", "white")
-            $('td:eq(6)').css("background", "white")
-            $('td:eq(7)').css("background", "white")
-        }
- })
- $("#c").click(function(){
-    let isCheck = $("#c").prop("checked")
-    if (isCheck) {
-            $('td:eq(8)').css("background", "lightblue")
-            $('td:eq(9)').css("background", "lightblue")
-            $('td:eq(10)').css("background", "lightblue")
-            $('td:eq(11)').css("background", "lightblue")
-        }else{
-            $('td:eq(8)').css("background", "white")
-            $('td:eq(9)').css("background", "white")
-            $('td:eq(10)').css("background", "white")
-            $('td:eq(11)').css("background", "white")
-        }
- })
- $("#d").click(function(){
-    let isCheck = $("#d").prop("checked")
-    if (isCheck) {
-            $('td:eq(12)').css("background", "lightblue")
-            $('td:eq(13)').css("background", "lightblue")
-            $('td:eq(14)').css("background", "lightblue")
-            $('td:eq(15)').css("background", "lightblue")
-        }else{
-            $('td:eq(12)').css("background", "white")
-            $('td:eq(13)').css("background", "white")
-            $('td:eq(14)').css("background", "white")
-            $('td:eq(15)').css("background", "white")
-        }
- })
+        })
 
-        
-        
-        
+
+    // 繞遠路
+//  $("#a").click(function(){
+//     let isCheck = $("#a").prop("checked")
+//     if (isCheck) {
+//             $('td:eq(0)').css("background", "lightblue")
+//             $('td:eq(1)').css("background", "lightblue")
+//             $('td:eq(2)').css("background", "lightblue")
+//             $('td:eq(3)').css("background", "lightblue")
+//         }else{
+//             $('td:eq(0)').css("background", "white")
+//             $('td:eq(1)').css("background", "white")
+//             $('td:eq(2)').css("background", "white")
+//             $('td:eq(3)').css("background", "white")
+//         }
+//  })
+//  $("#b").click(function(){
+//     let isCheck = $("#b").prop("checked")
+//     if (isCheck) {
+//             $('td:eq(4)').css("background", "lightblue")
+//             $('td:eq(5)').css("background", "lightblue")
+//             $('td:eq(6)').css("background", "lightblue")
+//             $('td:eq(7)').css("background", "lightblue")
+//         }else{
+//             $('td:eq(4)').css("background", "white")
+//             $('td:eq(5)').css("background", "white")
+//             $('td:eq(6)').css("background", "white")
+//             $('td:eq(7)').css("background", "white")
+//         }
+//  })
+//  $("#b").click(function(){
+//     let isCheck = $("#b").prop("checked")
+//     if (isCheck) {
+//             $('td:eq(4)').css("background", "lightblue")
+//             $('td:eq(5)').css("background", "lightblue")
+//             $('td:eq(6)').css("background", "lightblue")
+//             $('td:eq(7)').css("background", "lightblue")
+//         }else{
+//             $('td:eq(4)').css("background", "white")
+//             $('td:eq(5)').css("background", "white")
+//             $('td:eq(6)').css("background", "white")
+//             $('td:eq(7)').css("background", "white")
+//         }
+//  })
+//  $("#c").click(function(){
+//     let isCheck = $("#c").prop("checked")
+//     if (isCheck) {
+//             $('td:eq(8)').css("background", "lightblue")
+//             $('td:eq(9)').css("background", "lightblue")
+//             $('td:eq(10)').css("background", "lightblue")
+//             $('td:eq(11)').css("background", "lightblue")
+//         }else{
+//             $('td:eq(8)').css("background", "white")
+//             $('td:eq(9)').css("background", "white")
+//             $('td:eq(10)').css("background", "white")
+//             $('td:eq(11)').css("background", "white")
+//         }
+//  })
+//  $("#d").click(function(){
+//     let isCheck = $("#d").prop("checked")
+//     if (isCheck) {
+//             $('td:eq(12)').css("background", "lightblue")
+//             $('td:eq(13)').css("background", "lightblue")
+//             $('td:eq(14)').css("background", "lightblue")
+//             $('td:eq(15)').css("background", "lightblue")
+//         }else{
+//             $('td:eq(12)').css("background", "white")
+//             $('td:eq(13)').css("background", "white")
+//             $('td:eq(14)').css("background", "white")
+//             $('td:eq(15)').css("background", "white")
+//         }
+//  })
+
+
+
+
     </script>
 </body>
 
