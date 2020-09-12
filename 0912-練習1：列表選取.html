@@ -61,6 +61,14 @@
     </div>
 
     <script>
+
+// ●點擊 checkbox 後讓整行 highlight
+// ●用 :checkbox 選擇上層元素
+
+// 參考
+// $(":checkbox + label").css("background", "pink")
+        // 希望checkbox旁邊的label改變
+
  $("#a").click(function(){
     let isCheck = $("#a").prop("checked")
     if (isCheck) {

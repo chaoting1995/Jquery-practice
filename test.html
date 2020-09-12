@@ -4,17 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <div>123</div>
-    <div class="box">456</div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script>
-        $("div").css("background","red")
-        $(".box").css("background","lightblue")
+    
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: red;
+            margin: 20px;
+        }
 
+    </style>
+
+</head>
+
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+    <script>
+        $("div").click(function () {
+            $(this).css("background-color", "#0000FF").siblings().css("background-color", "RED")})
     </script>
 </body>
+
 </html>

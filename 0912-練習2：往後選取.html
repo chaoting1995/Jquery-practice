@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        td {
+            width: 70px;
+            height: 70px;
+        }
+
+        .color-01 {
+            background-color: rgb(231, 89, 89);
+        }
+
+        .color-02 {
+            background-color: rgb(231, 174, 89);
+        }
+
+        .color-03 {
+            background-color: rgb(231, 229, 89);
+        }
+
+        .color-04 {
+            background-color: rgb(153, 231, 89);
+        }
+
+        .color-05 {
+            background-color: rgb(89, 231, 160);
+        }
+
+        .color-06 {
+            background-color: rgb(89, 231, 219);
+        }
+
+        .color-07 {
+            background-color: rgb(89, 191, 231);
+        }
+
+        .color-08 {
+            background-color: rgb(89, 122, 231);
+        }
+
+        .color-09 {
+            background-color: rgb(89, 91, 231);
+        }
+
+        .color-10 {
+            background-color: rgb(151, 89, 231);
+        }
+
+        .color-11 {
+            background-color: rgb(203, 89, 231);
+        }
+
+        .color-12 {
+            background-color: rgb(231, 89, 155);
+        }
+    </style>
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table table-bordered">
+                <tr>
+                    <td class="box color-01" id="0"></td>
+                    <td class="box color-02" id="1"></td>
+                    <td class="box color-03" id="2"></td>
+                    <td class="box color-04" id="3"></td>
+                </tr>
+                <tr></tr>
+                    <td class="box color-05" id="4"></td>
+                    <td class="box color-06" id="5"></td>
+                    <td class="box color-07" id="6"></td>
+                    <td class="box color-08" id="7"></td>
+                </tr>
+                <tr>
+                    <td class="box color-09" id="8"></td>
+                    <td class="box color-10" id="9"></td>
+                    <td class="box color-11" id="10"></td>
+                    <td class="box color-12" id="11"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // 點擊 div 後讓後面背景顏色都變成 lightblue
+
+        // 1.:gt()- 選取大於第 n 個的(也可以給負數)
+        // $('td:gt(5)').css("background", "lightblue")
+
+        // 2.點擊n → 變色n
+        // $("td").click(function () {
+        //     $(this).css("background", "lightblue")})
+
+        // 3.點擊 → 大於第5個的變色
+        // $("td").click(function () {
+        //     $('td:gt(5)').css("background", "lightblue")})
+
+        // 4.點擊第n個td → 大於第 n 個的變色
+        // ●:eq()- 選取第 n 個(從0開始計算)
+        $("td").click(function () {
+            let number = ($(this).attr('id'))
+            if(number==0){
+                $('td:eq(0)').css("background", "lightblue");
+                $(`td:gt(${number})`).css("background", "lightblue")
+            }else{
+                $(`td:gt(${number-1})`).css("background", "lightblue")
+            }})
+            
+    </script>
+</body>
+
+</html>
