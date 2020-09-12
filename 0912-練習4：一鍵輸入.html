@@ -25,6 +25,11 @@
             justify-content: center;
             padding-top: 50px;
         }
+        form{
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 20px;
+        }
     </style>
 </head>
 
@@ -51,7 +56,7 @@
         <br>
 
 
-        <button type="submit" value="submit" class="btn btn-primary">Auto Input</button>
+        <a type="submit" value="submit" class="btn btn-primary auto">Auto Input</a>
 
         <button type="submit" value="submit" class="btn btn-primary">Submit</button>
         <br>
@@ -59,14 +64,15 @@
 
     </form>
     <script>
- // 【目標】●點擊按鈕之後自動輸入預先設定好的使用者資料
- $("div").click(function () {
-            $(this).toggleClass('circle-border').siblings().removeClass('circle-border')
+ // 【目標】點擊按鈕之後自動輸入預先設定好的使用者資料
+ $(".auto").click(function () {
+            $(":text").attr('value','李小明')
+            
+            // $("#email").attr('value','ming@test.com')
+            $('input:eq(1)').attr('value','ming@test.com')  //不靠id
+            
+            $(":password").attr('value','0000')
         })
-        
-        $(":text")
-       
-        $(":password")
 
     </script>
 </body>

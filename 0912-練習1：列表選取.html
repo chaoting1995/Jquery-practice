@@ -17,6 +17,10 @@
         td.highlight {
             background-color: lightblue;
         }
+
+        .bc-lightblue {
+            background: lightblue;
+        }
     </style>
     </style>
 </head>
@@ -26,7 +30,7 @@
         <div class="row d-flex justify-content-center">
             <table class="table table-bordered col-6">
                 <tr>
-                    <td><input type="checkbox" name="a" id="a" />
+                    <td><input type="checkbox" id="a" />
                     </td>
                     <td>AAA</td>
                     <td>0900-000-000</td>
@@ -34,21 +38,21 @@
 
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="a" id="b" /></td>
+                    <td><input type="checkbox" id="b" /></td>
                     <td>BBB</td>
                     <td>0900-000-000</td>
                     <td>BBB@test.com</td>
 
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="a" id="c" /></td>
+                    <td><input type="checkbox" id="c" /></td>
                     <td>CCC</td>
                     <td>0900-000-000</td>
                     <td>CCC@test.com</td>
 
                 </tr>
                 <tr>
-                    <td><input type="checkbox" name="a" id="d" /></td>
+                    <td><input type="checkbox" id="d" /></td>
                     <td>DDD</td>
                     <td>0900-000-000</td>
                     <td>DDD@test.com</td>
@@ -62,25 +66,21 @@
 
     <script>
 
-        // ●點擊 checkbox 後讓整行 highlight
-        // ●用 :checkbox 選擇上層元素
+        // 【目標】點擊 checkbox 後讓整行 highlight
+ 
 
+        // 1個function ()解決
+        // $("input").click(function () {
+        // $(":checked").parents("tr").addClass('bc-lightblue');
+        // $("input:not(:checked)").parents("tr").removeClass('bc-lightblue');})
 
-        // $("#a").click(function () {
-        //     if($("#a").prop("checked"))
-        //     $(":checked").parents("tr").css("background", "lightblue");
+        // toggle第n行 → 第n行變色
+        // console.log($(this))
+        // $('tr').click(function(){
+        //     $(this).toggleClass('bc-lightblue');
         // })
-        // $(":input").click(function () {
-        //     $(":input").not(':checked').parents("tr").css("background", "white");
-        // })
-        $("#a").click(function () {
-            if($("#a").prop("checked")){
-            $(":checked").parents("tr").css("background", "lightblue");
-            }else{
-        $(":input").click(function () {
-            $(":input").not(':checked').parents("tr").css("background", "white");
-        }
-        })
+
+        
 
 
     // 繞遠路
