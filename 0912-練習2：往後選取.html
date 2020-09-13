@@ -139,6 +139,21 @@
         // }
 
         // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
+        // for (let i = 0; i < 12; i++) {
+        //     $(`td:eq(${i})`).click(function () {
+        //         if (!$(this).hasClass("change")) {
+        //             $(`td`).removeClass("change");
+        //             $(`td:gt(${i - 1})`).addClass("change");
+        //             if (i == 0) {
+        //                 $('td').addClass("change");
+        //             }
+        //         } else {
+        //             $(`td`).removeClass("change");
+        //         }
+        //     })
+        // }
+
+        // 7.real toggle！
         for (let i = 0; i < 12; i++) {
             $(`td:eq(${i})`).click(function () {
                 if (!$(this).hasClass("change")) {
@@ -148,7 +163,15 @@
                         $('td').addClass("change");
                     }
                 } else {
-                    $(`td`).removeClass("change");
+                    if (!$(this).prev().hasClass("change")) {
+                        $(`td`).removeClass("change");
+                    } else {
+                        $(`td`).removeClass("change");
+                        $(`td:gt(${i - 1})`).addClass("change");
+                        if (i == 0) {
+                            $('td').addClass("change");
+                        }
+                    }
                 }
             })
         }
