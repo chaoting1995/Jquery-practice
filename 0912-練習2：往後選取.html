@@ -116,14 +116,26 @@
 
         // 4.點擊第n個td → 大於第 n 個的變色
         // ●:eq()- 選取第 n 個(從0開始計算)
+        // $("td").click(function () {
+        //     let number = ($(this).attr('id'))
+        //     if (number == 0) {
+        //         $('td:eq(0)').css("background", "lightblue");
+        //         $(`td:gt(${number})`).css("background", "lightblue")
+        //     } else {
+        //         $(`td:gt(${number - 1})`).css("background", "lightblue")
+        //     }
+        // })
+
+        // 5.點擊第n個td → 大於第 n 個的變色
         $("td").click(function () {
             let number = ($(this).attr('id'))
             if (number == 0) {
-                $('td:eq(0)').css("background", "lightblue");
-                $(`td:gt(${number})`).css("background", "lightblue")
+                $('td:eq(0)').toggleClass("change");
+                $(`td:gt(${number})`).toggleClass("change");
             } else {
-                $(`td:gt(${number - 1})`).css("background", "lightblue")
+                $(`td:gt(${number - 1})`).toggleClass("change");
             }
+        // return false;
         })
 
         // 5.單點toggle效果
@@ -135,7 +147,7 @@
         //     } else {
         //         $(`td:gt(${number - 1})`).toggleClass("change");
         //     }
-        // return false;
+        // // return false;
         // })
 
         // 6.點擊第n個td → 大於第 n 個的變色，且不與toggle衝突

@@ -65,22 +65,55 @@
     </div>
 
     <script>
-
         // 【目標】點擊 checkbox 後讓整行 highlight
- 
 
-        // 1個function ()解決
+// one function finished
         // $("input").click(function () {
         // $(":checked").parents("tr").addClass('bc-lightblue');
         // $("input:not(:checked)").parents("tr").removeClass('bc-lightblue');})
 
-        // toggle第n行 → 第n行變色
-        // console.log($(this))
-        // $('tr').click(function(){
+// toggle nRow → change nRow (but checkbox no sync)
+        // $('tr').click(function () {
         //     $(this).toggleClass('bc-lightblue');
         // })
 
-        
+//can't click checkbox
+//toggle nRow → change nRow (and checkbox sync)
+        // for (let i = 0; i < 4; i++) {
+        //     $(`tr:eq(${i})`).click(function () {
+        //         if ($(`input:eq(${i})`).attr("checked")) {
+        //             $(this).css("background", "white");
+        //             $(`:input:eq(${i})`).removeAttr("checked");
+        //         } else {
+        //             $(this).css("background", "Aquamarine");
+        //             $(`:input:eq(${i})`).attr("checked", "checked");
+        //         }
+        //     });
+        // }
+
+//Without for loop
+        // $("tr").click(function () {
+        //     let num = $(this).index()
+        //     $(this).toggleClass('bc-lightblue');
+        //     console.log(`input:eq(${num}):checked`)
+        //     if ($(`input:eq(${num})`).attr("checked")) {
+        //         $(`input:eq(${num})`).removeAttr("checked");
+        //     } else {
+        //         $(`input:eq(${num})`).attr("checked", "checked");
+        //     }
+        // });
+
+        $("tr").click(function () {
+            let num = $(this).index()
+            $(this).toggleClass('bc-lightblue');
+            console.log($(`tr:first-child`))
+            if ($(`input`).eq(num).attr("checked")) {
+                $(`input`).eq(num).removeAttr("checked");
+            } else {
+                $(`input`).eq(num).attr("checked", "checked");
+            }
+        });
+
 
 
     // 繞遠路
