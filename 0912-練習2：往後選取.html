@@ -128,29 +128,30 @@
 
         // 5.click td:eq(n) → change td:gt(n-1) 
         // but without toggle
-        for (let i = 0; i < 12; i++) {
-            $(`td:eq(${i})`).click(function () {
-                $(`td`).removeClass("change");
-                $(`td:gt(${i - 1})`).toggleClass("change");
-                if (i == 0) {
-                    $('td:eq(0)').addClass("change");
-                    $(`td:gt(${i})`).addClass("change");
-                }
-            })
-        }
-
-        // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
-        // 尚未成功
         // for (let i = 0; i < 12; i++) {
         //     $(`td:eq(${i})`).click(function () {
         //         $(`td`).removeClass("change");
         //         $(`td:gt(${i - 1})`).addClass("change");
         //         if (i == 0) {
-        //             $('td:eq(0)').addClass("change");
-        //             $(`td:gt(${i})`).addClass("change");
+        //             $('td').addClass("change");
         //         }
         //     })
         // }
+
+        // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
+        for (let i = 0; i < 12; i++) {
+            $(`td:eq(${i})`).click(function () {
+                if (!$(this).hasClass("change")) {
+                    $(`td`).removeClass("change");
+                    $(`td:gt(${i - 1})`).addClass("change");
+                    if (i == 0) {
+                        $('td').addClass("change");
+                    }
+                } else {
+                    $(`td`).removeClass("change");
+                }
+            })
+        }
 
 
 
