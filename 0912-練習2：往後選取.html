@@ -126,7 +126,20 @@
         //     }
         // })
 
-        // 5.可以回去了，但還是無法toggle
+        // 5.click td:eq(n) → change td:gt(n-1) 
+        // but without toggle
+        // for (let i = 0; i < 12; i++) {
+        //     $(`td:eq(${i})`).click(function () {
+        //         $(`td`).removeClass("change");
+        //         $(`td:gt(${i - 1})`).toggleClass("change");
+        //         if (i == 0) {
+        //             $('td:eq(0)').addClass("change");
+        //             $(`td:gt(${i})`).addClass("change");
+        //         }
+        //     })
+        // }
+
+        // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
         for (let i = 0; i < 12; i++) {
             $(`td:eq(${i})`).click(function () {
                 $(`td`).removeClass("change");
@@ -137,6 +150,33 @@
                 }
             })
         }
+
+
+        // for (let i = 0; i < 12; i++) {
+        //     $(`td:eq(${i})`).click(function () {
+        //         $(this).toggle(
+        //             function () {
+        //                 $(`td`).removeClass("change");
+        //                 $(`td:gt(${i - 1})`).addClass("change");
+        //                 if (i == 0) {
+        //                     $('td:eq(0)').addClass("change");
+        //                     $(`td:gt(${i})`).addClass("change");
+        //                 }
+        //             },
+        //             function () {
+        //                 $(`td:gt(${i - 1})`).removeClass("change");
+        //                 if (i == 0) {
+        //                     $('td:eq(0)').removeClass("change");
+        //                     $(`td:gt(${i})`).removeClass("change");
+        //                 }
+        //             },
+        //         )
+        //     })
+        // }
+
+
+
+
 
 
     </script>
