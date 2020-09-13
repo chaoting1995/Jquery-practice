@@ -79,22 +79,22 @@
         <div class="row">
             <table class="table table-bordered">
                 <tr>
-                    <td class="box color-01"></td>
-                    <td class="box color-02"></td>
-                    <td class="box color-03"></td>
-                    <td class="box color-04"></td>
+                    <td class="color-01"></td>
+                    <td class="color-02"></td>
+                    <td class="color-03"></td>
+                    <td class="color-04"></td>
                 </tr>
                 <tr>
-                    <td class="box color-05"></td>
-                    <td class="box color-06"></td>
-                    <td class="box color-07"></td>
-                    <td class="box color-08"></td>
+                    <td class="color-05"></td>
+                    <td class="color-06"></td>
+                    <td class="color-07"></td>
+                    <td class="color-08"></td>
                 </tr>
                 <tr>
-                    <td class="box color-09"></td>
-                    <td class="box color-10"></td>
-                    <td class="box color-11"></td>
-                    <td class="box color-12"></td>
+                    <td class="color-09"></td>
+                    <td class="color-10"></td>
+                    <td class="color-11"></td>
+                    <td class="color-12"></td>
                 </tr>
             </table>
         </div>
@@ -128,22 +128,10 @@
 
         // 5.click td:eq(n) → change td:gt(n-1) 
         // but without toggle
-        // for (let i = 0; i < 12; i++) {
-        //     $(`td:eq(${i})`).click(function () {
-        //         $(`td`).removeClass("change");
-        //         $(`td:gt(${i - 1})`).toggleClass("change");
-        //         if (i == 0) {
-        //             $('td:eq(0)').addClass("change");
-        //             $(`td:gt(${i})`).addClass("change");
-        //         }
-        //     })
-        // }
-
-        // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
         for (let i = 0; i < 12; i++) {
             $(`td:eq(${i})`).click(function () {
                 $(`td`).removeClass("change");
-                $(`td:gt(${i - 1})`).addClass("change");
+                $(`td:gt(${i - 1})`).toggleClass("change");
                 if (i == 0) {
                     $('td:eq(0)').addClass("change");
                     $(`td:gt(${i})`).addClass("change");
@@ -151,26 +139,16 @@
             })
         }
 
-
+        // 6.{click td:eq(n) → change td:gt(n-1)} with toggle
+        // 尚未成功
         // for (let i = 0; i < 12; i++) {
         //     $(`td:eq(${i})`).click(function () {
-        //         $(this).toggle(
-        //             function () {
-        //                 $(`td`).removeClass("change");
-        //                 $(`td:gt(${i - 1})`).addClass("change");
-        //                 if (i == 0) {
-        //                     $('td:eq(0)').addClass("change");
-        //                     $(`td:gt(${i})`).addClass("change");
-        //                 }
-        //             },
-        //             function () {
-        //                 $(`td:gt(${i - 1})`).removeClass("change");
-        //                 if (i == 0) {
-        //                     $('td:eq(0)').removeClass("change");
-        //                     $(`td:gt(${i})`).removeClass("change");
-        //                 }
-        //             },
-        //         )
+        //         $(`td`).removeClass("change");
+        //         $(`td:gt(${i - 1})`).addClass("change");
+        //         if (i == 0) {
+        //             $('td:eq(0)').addClass("change");
+        //             $(`td:gt(${i})`).addClass("change");
+        //         }
         //     })
         // }
 
