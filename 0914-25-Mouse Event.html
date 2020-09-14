@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <button class="btn-primary btn">Click</button>
+
+    <script>
+
+        // ●.click()- 點擊
+        $(".btn").click(function () {
+            console.log("click");
+        });
+
+        // ●.dblclick()- 連點
+        $(".btn").dblclick(function () {
+            console.log("dblclick");
+        });
+
+        // ●.contextmenu()- 右鍵
+        $(".btn").contextmenu(function () {
+            console.log("contextmenu");
+        });
+
+        // ●.mousedown()- 滑鼠按下
+        $(".btn").mousedown(function () {
+            console.log("mousedown");
+        });
+
+        // ●.mouseup()- 離開滑鼠
+        $(".btn").mouseup(function () {
+            console.log("mouseup");
+        });
+
+        // ●.mouseenter()- 滑鼠移進選擇器
+        $(".btn").mouseenter(function () {
+            console.log("mouseenter");
+        });
+
+        // ●.mouseleave()- 滑鼠離開
+        $(".btn").mouseup(function () {
+            console.log("mouseleave");
+        });
+
+        // ●.hover()- 移進與離開，都會觸發!!!
+        $(".btn").hover(function () {
+            console.log("hover");
+        });
+        // 只有 hover 的話滑進滑出都會回傳事件，要分開的話可以用這個方式寫：
+        $(".btn").hover(function () {
+            console.log("hover in");
+        }, function () {
+            console.log("hover in");
+        });
+
+
+    </script>
+</body>
+
+</html>
