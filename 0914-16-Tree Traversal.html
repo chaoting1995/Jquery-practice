@@ -35,6 +35,7 @@
                 <li class="item-003">li-003</li>
             </ul>
             <li class="item-03">li-03</li>
+            <li class="item-04">li-04</li>
         </ul>
         <li class="item-3">li-3</li>
 </div>
@@ -42,13 +43,14 @@
 
     <script>
 // .children() - 所有條件相符子元素(只找一層)
-        // $('.level-1').children().css("color", "lightblue");
+        // $('.level-2').children().css("color", "lightblue");
+        // $('.level-2').children('li').css("color", "lightblue");
         // 繼承color效果
-        // $('.level-1').children('li').css("color", "red");
-        // 有指定.children('li')，孫元素就不繼承CSS效果????????
-        
+        // $('.level-2').children('ul').css("color", "red");
+                
 // .find() - 找條件相符子孫元素
         // $('.level-1').find('.item-002').css("color", "blue");
+
 
 
 // ●.parent()- 往上選取一層
@@ -78,6 +80,45 @@
 
     // 老師測試版
         // $('.level-3').parent().find('.item-02').css("color", "red").parent().parent().find('.item-3').css("color", "red");
+
+
+// ●.next()- 往後找一個元素
+        // $('.item-01').next().css("color", "red");
+        // $('.item-01').next().next().next().css("color", "red");
+        // $('.item-01').next('li').css("color", "red");
+        // $('.item-01').next('ul').css("color", "red");
+
+// ●.nextAll()- 往後及其之後的元素
+        // $('.item-01').nextAll().css("color", "red");
+        // $('.item-01').nextAll('li').css("color", "red");
+
+// ●.nextUntil()- 往後選但到特定元素後停止
+        // $('.item-01').nextUntil().css("color", "red");
+        // $('.item-01').nextUntil('.item-04').css("color", "red");
+
+
+// ●.prev()-往前找一個元素
+        // $('.item-02').prev().css("color", "red");
+
+// ●.prevAll()-往前及其之前的元素
+        // $('.item-03').prevAll().css("color", "red");
+
+// ●.prevUntil()-往前選但到特定元素停止
+        // $('.item-04').prevUntil().css("color", "red");
+        // $('.item-04').prevUntil('ul').css("color", "red");
+
+
+// ●.siblings()- 自己以外的元素
+        // $('.item-003').siblings().css("color", "red");
+        // $('.item-02').siblings().css("color", "red");
+
+
+// ●.end()- 回到上一個選取狀態
+        // $('.level-2').find('.item-01').css( "color", "red" ).end().find( '.item-03' ).css( "color", "blue" );
+        // .end()，指的是回到選('.item-01')的前一步，即回到$('.level-2')
+
+
+
 
     </script>
 </body>

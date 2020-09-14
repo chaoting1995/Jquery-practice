@@ -61,6 +61,15 @@
         })
         //點一下，本身也能消失
         
+
+
+        // rekie's method
+        for (let i = 0; i < 5; i++) {
+        $(`img:eq(${i})`).click(function () {
+          $(`img:eq(${i})`).css("border", "5px solid red");
+          $(`img`).not(`img:eq(${i})`).css("border", "1px solid #ccc");
+        });
+      }
     </script>
 </body>
 

@@ -67,18 +67,18 @@
     <script>
         // 【目標】點擊 checkbox 後讓整行 highlight
 
-// one function finished
+        // one function finished
         // $("input").click(function () {
         // $(":checked").parents("tr").addClass('bc-lightblue');
         // $("input:not(:checked)").parents("tr").removeClass('bc-lightblue');})
 
-// toggle nRow → change nRow (but checkbox no sync)
+        // toggle nRow → change nRow (but checkbox no sync)
         // $('tr').click(function () {
         //     $(this).toggleClass('bc-lightblue');
         // })
 
-//Clicking on the checkbox will cause an error
-//toggle nRow → change nRow (and checkbox sync)
+        //Clicking on the checkbox will cause an error
+        //toggle nRow → change nRow (and checkbox sync)
         // for (let i = 0; i < 4; i++) {
         //     $(`tr:eq(${i})`).click(function () {
         //         if ($(`input:eq(${i})`).attr("checked")) {
@@ -91,8 +91,8 @@
         //     });
         // }
 
-//Clicking on the checkbox will cause an error
-//Without for loop
+        //Clicking on the checkbox will cause an error
+        //Without for loop
         // $("tr").click(function () {
         //     let num = $(this).index()
         //     $(this).toggleClass('bc-lightblue');
@@ -104,17 +104,41 @@
         //     }
         // });
 
+        // .prop和.attr，返回值不同
+        // .prop，讀出true or false
+
+        // $("tr").click(function () {
+        //     let num = $(this).index()
+        //     $(this).toggleClass('bc-lightblue');
+        //     console.log($(`tr:first-child`))
+        //     if ($(`input`).eq(num).prop("checked")) {
+        //         $(`input`).eq(num).removeAttr("checked");
+        //     } else {
+        //         $(`input`).eq(num).attr("checked", "checked");
+        //     }
+        // });
+
+        // let check  sync
         $("tr").click(function () {
             let num = $(this).index()
             $(this).toggleClass('bc-lightblue');
             console.log($(`tr:first-child`))
-            if ($(`input`).eq(num).attr("checked")) {
+            if ($(`input`).eq(num).prop("checked")) {
                 $(`input`).eq(num).removeAttr("checked");
             } else {
                 $(`input`).eq(num).attr("checked", "checked");
             }
+            if ($(`input`).eq(num).prop("checked")) {
+                $(`tr`).eq(num).addClass('bc-lightblue')
+            } else {
+                $(`tr`).eq(num).removeClass('bc-lightblue')
+            }
         });
 
+
+// if(tr有'bc-lightblue'的class)
+// 點tr → checkbox v
+// 再點tr → tr不變色 + checkbox 不v
 
 
     // 繞遠路
