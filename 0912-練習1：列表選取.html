@@ -118,21 +118,39 @@
         //     }
         // });
 
+
+
+        // click tr  → tr變色
+        // if (v) {
+        //     tr變色
+        // } else {
+        //     tr不變色
+        // }
+        // if(tr變色){
+        //     v
+        // }else{
+        //     x
+        // }
+
         // let check  sync
         $("tr").click(function () {
             let num = $(this).index()
             $(this).toggleClass('bc-lightblue');
-            console.log($(`tr:first-child`))
-            if ($(`input`).eq(num).prop("checked")) {
-                $(`input`).eq(num).removeAttr("checked");
+            if ($("tr").eq(num).hasClass('bc-lightblue')) {
+                $(`input`).eq(num).prop("checked", true);
             } else {
-                $(`input`).eq(num).attr("checked", "checked");
+                $(`input`).eq(num).prop("checked", false);
             }
-            if ($(`input`).eq(num).prop("checked")) {
-                $(`tr`).eq(num).addClass('bc-lightblue')
-            } else {
-                $(`tr`).eq(num).removeClass('bc-lightblue')
-            }
+            // if ($(`input`).eq(num).prop("checked")) {
+            //     $(`input`).eq(num).attr("checked", "checked");
+            // } else {
+            //     $(`input`).eq(num).removeAttr("checked");
+            // }
+            // if ($(`input`).eq(num).prop("checked")) {
+            //     $(`tr`).eq(num).addClass('bc-lightblue')
+            // } else {
+            //     $(`tr`).eq(num).removeClass('bc-lightblue')
+
         });
 
 
