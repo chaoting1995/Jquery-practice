@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5" >
+        <div class="row">
+            <form action="">
+                <div class="form-group">
+                    <input type="text" name="user" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // 表單事件(Form Event)
+        // 目錄
+
+
+
+
+
+        // ●.submit() - 點了可以送出表單
+        let index = 0;
+        $('form').submit(function (event) {
+            event.preventDefault();
+            console.log('h1', index);
+            index++;
+        })
+
+        // ●.focus() 偵測某個 input 變成輸入狀態
+        $(':text').focus(function () {
+            console.log('focus');
+        })
+
+        // ●.blur()  偵測離開某個 input 輸入狀態
+        $(':text').blur(function () {
+            console.log('blur');
+        })
+
+        // ●.change() - 偵測 input 或 select 變化
+        $(':text').change(function () {
+            console.log('change：',$(this).val());
+        })
+
+    </script>
+
+</body>
+
+</html>
