@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>progress bar</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 300vh;
+            transition: .5s;
+
+        }
+
+        .wrap {
+            background-color: #ddd;
+            height: 50px;
+            width: 100%;
+            position: fixed;
+        }
+
+        .progress_bar {
+            background-color: pink;
+            height: 50px;
+            width: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="progress_bar"></div>
+    </div>
+
+    <!-- 1319.2593994140625 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+
+    </script>
+    <script>
+        // 1. 利用 scrollTop() 算出目前捲軸位置
+        // 2. 與頁面高度對比算出比例
+        // 3. 再將比例加到進度條上
+
+
+        // 讀到超過一定比例，畫面變色
+        $(window).scroll(function () {
+            // console.log("scrollTOP:", $(this).scrollTop());
+           
+            // console.log('window_hight', window_height)
+            let page_height = $('body').height();
+            let window_height = $(window).height();
+            console.log('page_hight', page_height)
+
+            let scrollTop = $(this).scrollTop();
+            let percentage = `${(scrollTop / (page_height - window_height)) * 100}%`;
+            $('.progress_bar').css('width', percentage);
+            let a = page_height - window_height
+            if (scrollTop > (a/2)){
+                $('body').css('background','lightblue')
+            }else{
+                $('body').css('background','none')
+            }
+        });
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

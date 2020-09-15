@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box move</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .wrap {
+            position: relative;
+            width: 800px;
+            height: 400px;
+            background-color: #eee;
+        }
+
+        .box {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            background-color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap  mx-auto">
+        <div class="box">
+
+        </div>
+    </div>
+    <div class="py-3 text-center">
+        <div class="py-1">
+            <button class="btn btn-info" id="up">^</button>
+        </div>
+        <div>
+            <button class="btn btn-info" id="left"><</button>
+            <button class="btn btn-info" id="right">></button>
+        </div>
+        <div class="py-1">
+            <button class="btn btn-info" id="down">v</button>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        
+        let timeoutID = null;
+        let move_speed
+
+        $('#up').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('top', '+=20')), 10);
+            }
+        })
+
+        $('#up').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+        $('#down').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('top', '-=20')), 10);
+            }
+
+        })
+        $('#down').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+        $('#left').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('left', '-=20')), 10);
+            }
+
+        })
+        $('#left').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+        $('#right').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('left', '+=20')), 10);
+            }
+
+        })
+        $('#right').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+    </script>
+</body>
+
+</html>

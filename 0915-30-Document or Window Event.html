@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>scroll</title>
+    <style>
+      body {
+        height: 300vh;
+        width: 300vw;
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+        // ●.scroll() - 偵測滑鼠滾動
+        
+        // .scrollTop(), .scrollLeft()
+        // ●偵測捲軸位置或是指定捲軸位置
+        // ●()內無值為偵測位置，有值則為指定位置
+        // 做首頁常用
+    //   $(window).scroll(function () {
+    //     // console.log("hi");
+    //     console.log("scrollTOP:", $(this).scrollTop());
+        // console.log("scrollLeft:", $(this).scrollLeft());
+        // console.log("scroll:", $(this).scroll()); //不能這樣做
+        
+    //   });
+
+
+
+        // ●.resize() - 偵測瀏覽器大小變化
+
+        //     .width(), .height()
+        // ●偵測 selector 長寬或是指定 selector 長寬
+        // ●()內無值為偵測長寬，有值則為指定長寬
+        $(window).resize(function () {
+        // console.log("hi");
+        // console.log("width:", $(this).width());
+        console.log("height:", $(this).height());
+    });
+    </script>
+  </body>
+</html>

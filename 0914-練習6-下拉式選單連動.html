@@ -21,18 +21,20 @@
         <div class="row"></div>
         <form action="">
             <div class="form-row">
+
                 <div class="form-group">
                     <select name="city" id="city" class="form-control">
-                        <option value="1">基隆</option>
-                        <option value="2">台北</option>
-                        <option value="3">新北</option>
+                        <option value="0">基隆</option>
+                        <option value="1">台北</option>
+                        <option value="2">新北</option>
                     </select>
                 </div>
+
                 <div class="form-group">
                     <select name="district" id="district" class="form-control">
-                        <option value="0">七堵區</option>
-                        <option value="1">中正區</option>
-                        <option value="2">暖暖區</option>
+                        <option value="0">七堵</option>
+                        <option value="1">中正</option>
+                        <option value="2">暖暖</option>
                     </select>
                 </div>
             </div>
@@ -42,14 +44,33 @@
 
 
     <script>
-
         let districtObj = [
-            ['七堵', '中正', '暖暖'],
-            ['中正', '大安', '信義'],
-            ['蘆洲', '三重', '新店'],
+            ["七堵", "中正", "暖暖"],
+            ["中正", "大安", "信義"],
+            ["蘆洲", "三重", "新店"],
         ];
 
+        // 用for迴圈
+        // $("#city").change(function () {
+        //     let cityIndex = $(this).val();
+        //     // console.log("hi", $(this).val());
+        //     for (let i = 0; i < 3; i++) {
+        //         $("#district option").eq(i).text(districtObj[cityIndex][i]);
+        //     }
+        // });
 
+
+        // 用.each()
+        // $("#city").change(function () {
+        //     const city_index = $(this).val();
+
+        //         $("#district option").each(function(){
+        //             $(this).text(districtObj[city_index][$(this).val()]);
+        //         })
+        // });
+
+
+        
     </script>
 </body>
 

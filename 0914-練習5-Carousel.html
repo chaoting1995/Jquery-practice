@@ -40,9 +40,11 @@
             transition: .3s;
         }
 
-        .this-slider-dots {
+        .slider-dots .this-slider-dots {
             background-color: rgb(255, 255, 255);
-        } /* 效果出不來 */
+        }
+
+        /* 效果出不來 */
 
         .slider-dots {
             bottom: 0px;
@@ -80,13 +82,46 @@
         </ul>
     </div>
     <script>
-        $('li').click(function () {
-        let num = $(this).index()
-        $('.img-wrap').css('left',`${num*-800}px`)
-        $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')
-        })
+
+        let auto_run = function () {
+            $('li').click(function () {
+                let num = $(this).index()
+                $('.img-wrap').css('left', `${num * -800}px`)
+                $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')
+            })
+            refresh();
+        }
+        let refresh = function () {
+            setTimeout(auto_run, 1000);
+        }
+        auto_run();
 
 
+
+                
+        // let recalculate = function () {
+        //     let counter = countdown(goal);
+        //     let time = `${counter[1]}小時 ${counter[2]}分 ${counter[3]}秒`
+        //     document.getElementById('timer').textContent = time;
+        //     refresh();
+        // }
+        // let refresh = function () {
+        //     setTimeout(recalculate, 1000);
+        // }
+        // recalculate();
+        
+        // hover，留白點點
+        // $('li').hover(function () {
+        //     let num = $(this).index()
+        //     $('.img-wrap').css('left', `${num * -800}px`)
+        //     $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')
+        // })
+
+        // $('li').click(function () {
+        // let num = $(this).index()
+        // $('.img-wrap').css('left',`${num*-800}px`)
+        // $(this).css('background','rgb(255, 255, 255)').siblings().css('background','rgba(255, 255, 255, 0.397)')
+        // })
     </script>
 </body>
 

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #afa;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="extend">extend</button>
+    <button id="back">back</button>
+    <div class="box"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // 版本一
+        // $("#extend").click(function () {
+        //     $(".box").css("width", "+=20");
+        // });
+
+
+
+        let timeoutID = null;
+
+        $('#extend').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('width', '+=20')), 10);
+            }
+        })
+
+        $('#extend').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+        $('#back').mousedown(function () {
+            if (timeoutID == null) {
+                timeoutID = window.setInterval((() => $('.box').css('width', '-=20')), 10);
+            }
+
+        })
+        $('#back').mouseup(function () {
+            window.clearInterval(timeoutID);
+            timeoutID = null
+        })
+
+    </script>
+</body>
+
+</html>
