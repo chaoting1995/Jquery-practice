@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        span {
+            color: darksalmon;
+        }
+
+        h1 {
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <button class="btn btn-primary" id="getText">get text</button>
+        <button class="btn btn-primary" id="getHtml">get html</button>
+        <button class="btn btn-primary" id="getHtmlResultText">get html result text</button>
+        <br>
+        <h1>sample：</h1>
+        <h1 id="sample">Hello <span>World</span></h1>
+        <br>
+        <h1>result：</h1>
+        <h1 id="result"></h1>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+
+        // ●取得或設定 HTML tag 內的文字
+        $('#getText').click(function () {
+            // ●取值: .text()
+            let content = $('#sample').text();
+            // ●設值: .text(text)
+            $('#result').text(content);
+        });
+
+        // ●跟.text()類似，但會取得或設定 HTML tag 的HTML內容
+        $('#getHtml').click(function () {
+            // ●取值: .html()
+            let content = $('#sample').html();
+            // ●設值: .html(html)
+            $('#result').html(content);
+        });
+
+        $('#getHtmlResultText').click(function () {
+            let content = $('#sample').html();
+            $('#result').text(content);
+        });
+    </script>
+</body>
+
+</html>
