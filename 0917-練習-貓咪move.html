@@ -12,11 +12,14 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
+        /* *{
+            border: 1px solid black;
+        } */
         .wrap {
             position: relative;
             width: 800px;
             height: 400px;
-            background-color: #eee;
+            background-color: #ddd;
         }
 
         .box {
@@ -26,6 +29,14 @@
             width: 120px;
             height: 120px;
         }
+
+        .origin {
+            position: absolute;
+            top: 140px;
+            left: 340px;
+        }
+
+        /* .origin_position */
 
         .catgrass {
             position: absolute;
@@ -75,45 +86,89 @@
         .hidden {
             visibility: hidden;
         }
+
+        .color-select {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            margin-top: 50px;
+        }
+
+        .circle-button {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            margin-top: 50px;
+        }
     </style>
 </head>
 
 <body>
     <div class="wrap  mx-auto">
+        <!-- 貓草 -->
         <div class="catgrass">
             <img src="./img/catgrass.svg" alt="">
         </div>
+
+        <!-- 貓 -->
         <div class="box">
+            <!-- 對話框 -->
             <div class="talk animate__animated animate__wobble hidden">
+                <!-- 愛心 -->
                 <img class="heart" src="./img/heart.svg" alt="">
             </div>
-            <img src="./img/orangecat.svg" alt="">
-        </div>
-    </div>
-    <div class="py-3 text-center">
-        <div class="py-1">
-            <button class="btn btn-info" id="up">
-                <i class="fas fa-caret-up"></i>
-            </button>
-        </div>
-
-        <div>
-            <button class="btn btn-info" id="left">
-                <i class="fas fa-caret-left"></i>
-            </button>
-            <div id="block"></div>
-            <button class="btn btn-info" id="right">
-                <i class="fas fa-caret-right"></i>
-            </button>
-        </div>
-
-        <div class="py-1">
-            <button class="btn btn-info" id="down">
-                <i class="fas fa-caret-down"></i>
-            </button>
+            <!-- 貓圖 -->
+            <img id="cat" src="./img/orangecat.svg" alt="">
         </div>
     </div>
 
+    <div class="container d-flex flex-wrap justify-content-center">
+        <div class=" d-flex flex-wrap">
+            <div class="color-select-area d-flex">
+                <div class="circle-button rounded-circle" style="background: rgb(187, 48, 48)"></div>
+                <div class="circle-button rounded-circle" style="background:rgb(187, 48, 48)"></div>
+                <div class="circle-button rounded-circle" style="background: rgb(187, 48, 48)"></div>
+            </div>
+        </div>
+        <!-- 方向鍵 -->
+        <div class="py-3 col-3 text-center">
+            <!-- 上 -->
+            <div class="py-1">
+                <button class="btn btn-info" id="up">
+                    <i class="fas fa-caret-up"></i>
+                </button>
+            </div>
+
+            <div>
+                <!-- 左 -->
+                <button class="btn btn-info" id="left">
+                    <i class="fas fa-caret-left"></i>
+                </button>
+                <!-- 中 -->
+                <!-- <div id="block"></div> -->
+                <button class="origin_position btn btn-info">●</button>
+                <!-- 右 -->
+                <button class="btn btn-info" id="right">
+                    <i class="fas fa-caret-right"></i>
+                </button>
+            </div>
+            <!-- 下 -->
+            <div class="py-1">
+                <button class="btn btn-info" id="down">
+                    <i class="fas fa-caret-down"></i>
+                </button>
+            </div>
+
+        </div>
+        <div class=" d-flex flex-wrap">
+            <div class="color-select-area d-flex">
+                <div class="color-select rounded-circle" id="black" style="background: dimgray;"></div>
+                <div class="color-select rounded-circle" id="orange" style="background: orange;"></div>
+                <div class="color-select rounded-circle" id="white"
+                    style="background: whitesmoke;border:1px solid lightgray"></div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script>
@@ -208,6 +263,16 @@
 
         // 邊界與setinterval，是否衝突？
 
+        // 一鍵復原位置(沒用)
+        // $('.origin_position').click(function () {
+        //     $('.box').addClass('.origin')
+        // })
+
+        // 換貓咪顏色
+        $('.color-select').click(function () {
+            let cat_color = $(this).attr('id')
+            $('#cat').attr('src', `./img/${cat_color}cat.svg`)
+        })
 
         // 碰到貓草，顯示愛心，發出叫聲
         let timeoutID1 = window.setInterval((() => {
@@ -221,11 +286,11 @@
                             $(".talk").removeClass('hidden');
                             let button_audio = new Audio('./audio/cat1b.mp3');
                             button_audio.play();
-                        } else { 
+                        } else {
                             $(".talk").addClass('hidden');
                             button_audio = null;
 
-                     }
+                        }
                     }
                 }
             }
@@ -238,8 +303,8 @@
             });
         }, 10);
 
- 
-       
+
+
 
 
     </script>

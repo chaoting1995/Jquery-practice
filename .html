@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style type="text/css">
+    .img {
+      width: 350px;
+      height: 350px;
+      border: 1px solid #ccc;
+      margin: 100px;
+      position: relative;
+      cursor: move;
+    }
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;  
+    }
+
+    .bimg {
+      position: relative;
+      top: -400px;
+      left: 500px;
+      border: 1px solid #ccc;
+      width: 400px;
+      height: 400px;
+      overflow: hidden;
+      display: none;
+      max-width: 800px;
+    }
+
+    .simg{
+      width: 400px;
+      height: 400px;
+    }
+    #move {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: rgba(8, 152, 202, 0.2);
+      top: 0px;
+      left: 0px;
+      display: none;
+    }
+
+    .bimg>img {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="img">
+    <div class="simg">
+      <!--小圖片--> <img src="./img/rere-img/images.png" />
+      <div id="move"></div>
+      <!--放大區域-->
+    </div>
+    <div class="bimg">
+      <!--大圖片--> <img src="./img/rere-img/images.png" /> </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+  <script>
+
+    //為小圖片添加hover事件 滑鼠移動到小圖片上時，放大區域和大圖片的div需要顯示出來，反之隱藏
+    $(".img").hover(function () {
+      $(".bimg").css("display", "block");
+      $("#move").css("display", "block");
+    }, function () {
+      $(".bimg").css("display", "none");
+      $("#move").css("display", "none");
+    });
+    //需要為小圖片的div添加一個滑鼠移動時間
+    $(".img").mousemove(function (event) {
+      //需要獲取滑鼠移動是距離左邊和頂端的距離
+      var x = event.pageX;
+      var y = event.pageY;
+      //需要計算放大區域的需要移動到的位置
+      var nx = x - $(".img").offset().left - $("#move").width() / 2;
+      var ny = y - $(".img").offset().top - $("#move").height() / 2;
+      //判斷移動後是否已經超出的範圍
+      if (nx < 0) { //左邊超出
+        nx = 0;
+      }
+      if (nx > $(".img").width() - $("#move").width()) {//右邊超出
+        nx = $(".img").width() - $("#move").width();
+      }
+      if (ny < 0) { //頂端超出
+        ny = 0;
+      }
+      if (ny > $(".img").height() - $("#move").height()) {//底部超出
+        ny = $(".img").height() - $("#move").height();
+      }
+      //設置放大區域的移動
+      $("#move").css({
+        left: nx + "px",
+        top: ny + "px"
+      });
+      //設置大圖片的移動 大圖片的移動方向與放大區域正好相反
+      $(".bimg>img").css({
+        left: -nx * $("#move").width() / $(".simg").width() + "px",
+        top: -ny * $("#move").height() / $(".simg").height() + "px"
+      });
+    })
+  </script>
+</body>
+
+</html>
