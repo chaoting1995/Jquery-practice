@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #afa;
+            margin-top: 10px;
+            transition: .3s;
+            display: inline-block;
+        }
+
+        .active {
+            background-color: #faf;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(170, 249, 255);
+            margin-top: 10px;
+            transition: .3s;
+        }
+
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="addClass">addClass</button>
+    <button id="removeClass">removeClass</button>
+    <button id="toggleClass">toggleClass</button>
+    <br>
+    <div class="box"></div>
+    <div class="box1"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // ●.css() - 設定 css
+
+        // ●.addClass() - 增加 class
+        $('#addClass').click(function () {
+            $('.box').addClass('active');
+        })
+
+        // ●.removeClass() - 移除 class
+        $('#removeClass').click(function () {
+            $('.box').removeClass('active');
+        })
+
+        // ●.toggleClass() - 動態切換 class
+        $('#toggleClass').click(function () {
+            $('.box').toggleClass('active');
+            // ●.hasClass() - 判斷是否有某個 class
+            if ($('.box').hasClass('active')) {
+                $('.box1').css('display', 'inline-block')
+            } else {
+                $('.box1').css('display', 'none')
+            }
+        })
+
+    </script>
+</body>
+
+</html>

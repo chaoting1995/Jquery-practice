@@ -7,6 +7,8 @@
     <title>box move</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <style>
         .wrap {
             position: relative;
@@ -17,11 +19,19 @@
 
         .box {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 140px;
+            left: 340px;
             width: 120px;
             height: 120px;
             background-color: lightblue;
+        }
+
+        #block {
+            display: inline-block;
+            background-color: #fff;
+            /* border: 1px solid black; */
+            width: 30px;
+            height: 20px;
         }
     </style>
 </head>
@@ -34,27 +44,112 @@
     </div>
     <div class="py-3 text-center">
         <div class="py-1">
-            <button class="btn btn-info" id="up">^</button>
+            <button class="btn btn-info" id="up">
+                <i class="fas fa-caret-up"></i>
+            </button>
         </div>
+
         <div>
-            <button class="btn btn-info" id="left"><</button>
-            <button class="btn btn-info" id="right">></button>
+            <button class="btn btn-info" id="left">
+                <i class="fas fa-caret-left"></i>
+            </button>
+            <div id="block"></div>
+            <button class="btn btn-info" id="right">
+                <i class="fas fa-caret-right"></i>
+            </button>
         </div>
+
         <div class="py-1">
-            <button class="btn btn-info" id="down">v</button>
+            <button class="btn btn-info" id="down">
+                <i class="fas fa-caret-down"></i>
+            </button>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script>
-        
-        let timeoutID = null;
-        let move_speed
 
+        // 設定速度
+        let move_speed = 10;
+        let timeoutID = null;
+
+        // 邊界與setinterval，是否衝突？
+        // 設定邊界
+        $("#left").click(function () {
+            let newLeft = parseInt($(".box").css("left"));
+            if (newLeft > 0) {
+                $(".box").css("left", "-=" + move);
+            }
+        });
+        $("#right").click(function () {
+            let newLeft = parseInt($(".box").css("left"));
+            if (newLeft < 680) {
+                $(".box").css("left", "+=" + move);
+            }
+        });
+        $("#up").click(function () {
+            let newLeft = parseInt($(".box").css("top"));
+            if (newLeft < 0) {
+                $(".box").css("top", "-=" + move);
+            }
+        });
+        $("#down").click(function () {
+            let newLeft = parseInt($(".box").css("top"));
+            if (newLeft < 280) {
+                $(".box").css("top", "+=" + move);
+            }
+        });
+
+        // 控制方向：鍵盤
+        $(document).on("keydown", function (e) {
+            // console.log("event:", e);
+            let code = e.which;
+            // 左37 上38 右39 下40
+            if (code === 37) {
+                if (timeoutID == null) {
+                    timeoutID = window.setInterval((() => $('.box').css('left', '-=20')), move_speed);
+                }
+            } else if (code === 38) {
+                if (timeoutID == null) {
+                    timeoutID = window.setInterval((() => $('.box').css('top', '-=20')), move_speed);
+                }
+            } else if (code === 39) {
+                if (timeoutID == null) {
+                    timeoutID = window.setInterval((() => $('.box').css('left', '+=20')), move_speed);
+                }
+            } else if (code === 40) {
+                if (timeoutID == null) {
+                    timeoutID = window.setInterval((() => $('.box').css('top', '+=20')), move_speed);
+                }
+            }
+        });
+
+        $(document).on("keyup", function (e) {
+            // console.log("event:", e);
+            let code = e.which;
+
+            // 左37 上38 右39 下40
+            if (code === 37) {
+                window.clearInterval(timeoutID);
+                timeoutID = null
+            } else if (code === 38) {
+                window.clearInterval(timeoutID);
+                timeoutID = null
+            } else if (code === 39) {
+                window.clearInterval(timeoutID);
+                timeoutID = null
+            } else if (code === 40) {
+                window.clearInterval(timeoutID);
+                timeoutID = null
+            }
+        });
+
+        // 控制方向：滑鼠
+        // 上
         $('#up').mousedown(function () {
             if (timeoutID == null) {
-                timeoutID = window.setInterval((() => $('.box').css('top', '+=20')), 10);
+                timeoutID = window.setInterval((() => $('.box').css('top', '-=20')), move_speed);
             }
         })
 
@@ -62,19 +157,20 @@
             window.clearInterval(timeoutID);
             timeoutID = null
         })
+        // 下
         $('#down').mousedown(function () {
             if (timeoutID == null) {
-                timeoutID = window.setInterval((() => $('.box').css('top', '-=20')), 10);
+                timeoutID = window.setInterval((() => $('.box').css('top', '+=20')), move_speed);
             }
-
         })
         $('#down').mouseup(function () {
             window.clearInterval(timeoutID);
             timeoutID = null
         })
+        // 左
         $('#left').mousedown(function () {
             if (timeoutID == null) {
-                timeoutID = window.setInterval((() => $('.box').css('left', '-=20')), 10);
+                timeoutID = window.setInterval((() => $('.box').css('left', '-=20')), move_speed);
             }
 
         })
@@ -82,9 +178,10 @@
             window.clearInterval(timeoutID);
             timeoutID = null
         })
+        // 右
         $('#right').mousedown(function () {
             if (timeoutID == null) {
-                timeoutID = window.setInterval((() => $('.box').css('left', '+=20')), 10);
+                timeoutID = window.setInterval((() => $('.box').css('left', '+=20')), move_speed);
             }
 
         })

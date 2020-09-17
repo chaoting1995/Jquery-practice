@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 10px 50px;
+        }
+
+        .wrap {
+            width: 800px;
+            height: 400px;
+            background-color: #ccc;
+            margin: 10px 10px;
+            padding: 20px 20px;
+            position: relative;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #afa;
+            margin: 20px 40px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">.wrap→position: relative
+        <div class="box"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script> 
+        
+    // 使用方法和絕對位置基本上一樣，只是座標參考起始點位置不同。
+
+    // position() - 取得一個物件，包含top和left
+    console.log("position:", $(".box").position());
+    // position().left - 取得X座標
+    console.log("position left:", $(".box").position().left);
+    // position().top - 取得Y座標
+    console.log("position top:", $(".box").position().top);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            padding: 10px 10px;
+            border: 5px solid red;
+            margin: 150px 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // offset() - 取得一個物件，包含top和left
+        console.log("offset:", $(".box").offset());
+
+        // offset().left - 取得X座標
+        console.log("offset left:", $(".box").offset().left);
+
+        // offset().top - 取得Y座標
+        console.log("offset top:", $(".box").offset().top);
+
+        // 也可以傳入一個物件設定他的位置(數值為字串)
+        $('.box').offset({
+            top: '50', //數值為字串
+            left: '100',
+        })
+        // offset().left - 取得X座標
+        console.log("offset left:", $(".box").offset().left);
+
+        // offset().top - 取得Y座標
+        console.log("offset top:", $(".box").offset().top);
+        // 用.offset設定，沒法用.offset讀取????
+        // offset覆蓋margin效果
+        // 加bootstrap，body預設margin:8px會被關掉
+        // CSS失控的Margin top，div的margin被body的預設margin吸收，變成共用margin(只有垂直會發生問題)
+        //    https://wcc723.github.io/css/2016/06/08/css-margin-collapsing/
+
+    </script>
+</body>
+
+</html>

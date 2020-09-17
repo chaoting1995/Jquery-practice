@@ -1,100 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carousel</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
     <style>
-        .image-shown {
-            display: inline-block;
-        }
+      .wrap {
+        width: 800px;
+        height: 400px;
+        overflow: hidden;
+      }
+      .img-wrap {
+        width: 4000px;
+        left: 0px;
+        transition: 0.5s ease-in;
+      }
 
-        .image-hidden {
-            display: none;
-        }
-
-        .carousel-inner {
-            width: 750px;
-            height: 300px;
-            float: left;
-        }
-
-        .carousel-inner img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .previouslink,
-        .nextlink {
-            float: left;
-            margin-top: 150px;
-        }
-
-        .previouslink {
-            margin-right: 20px;
-        }
-
-        .nextlink {
-            margin-left: 20px;
-        }
+      img {
+        width: 800px;
+        height: 100%;
+        object-fit: cover;
+      }
+      .slider-dots {
+        bottom: 0;
+      }
+      .slider-dots li {
+        width: 40px;
+        height: 10px;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        margin: 0 4px;
+      }
     </style>
-</head>
+  </head>
+  <body>
+    <div class="wrap mx-auto position-relative">
+      <ul class="list-unstyled d-flex img-wrap position-absolute">
+        <li><img src="img/rere-img/better-is-one-day-laptop.jpg" alt="" /></li>
+        <li>
+          <img src="img/rere-img/cristian-escobar-297114-unsplash.jpg" alt="" />
+        </li>
+        <li><img src="img/rere-img/garrett-sears-96298-unsplash.jpg" alt="" /></li>
+        <li><img src="img/rere-img/jared-sluyter-342881-unsplash.jpg" alt="" /></li>
+        <li><img src="img/rere-img/jordan-bauer-274424-unsplash.jpg" alt="" /></li>
+      </ul>
+      <ul
+        class="list-unstyled slider-dots position-absolute d-flex w-100 justify-content-center"
+      >
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
 
-<body>
-    <div class="page">
-        <h2>jQuery IMAGE</h2>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      let myInterval = null;
 
-        <div class="carousel-outer"> 
-            <a href="#" class="previouslink">Previous</a>
-                <div class="carousel-inner"> 
-                    <img class="image-shown imagess" src="./img/slide1.jpg" alt="" />
-                    <img class="image-hidden imagess" src="./img/slide1.jpg" alt="" />
-                    <img class="image-hidden imagess" src="./img/slide1.jpg" alt="" />
-                    <img class="image-hidden imagess" src="./img/slide1.jpg" alt="" />
-                    <img class="image-hidden imagess" src="./img/slide1.jpg" alt="" />
-                </div>
-            <a href="#" class="nextlink">Next</a>
-        </div>
-</div>
+      //setInterval
+      let picNum = 0;
+      function startInterval() {
+        myInterval = setInterval(() => {
+          $(".img-wrap").css("left", (picNum % 5) * -800);
+          $(".slider-dots li")
+            .eq(picNum % 5)
+            .css("background", "white")
+            .siblings()
+            .css("background", "none");
+          picNum++;
+        }, 2000);
+      }
+      startInterval();
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"
-    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function(){
-
-$(".nextlink").on("click", function(e){
-
-        var currentActiveImage = $(".image-shown");
-        var nextActiveImage = currentActiveImage.next();
-
-        if(nextActiveImage.length == 0){
-            nextActiveImage= $(".carousel-inner img").first();
+      $("li").hover(
+        function () {
+          let runLeft = $(this).index() * -800;
+          // console.log(-800 * runleft + "px");
+          $(".img-wrap").css("left", runLeft);
+          $(this)
+            .css("background", "white")
+            .siblings()
+            .css("background", "none");
+          clearInterval(myInterval);
+        },
+        function () {
+          let runLeft = $(this).index() * -800;
+          // console.log(-800 * runleft + "px");
+          $(".img-wrap").css("left", runLeft);
+          $(this)
+            .css("background", "white")
+            .siblings()
+            .css("background", "none");
+          startInterval();
         }
-
-        currentActiveImage.removeClass("image-shown").addClass("image-hidden").css("z-index", -10);
-        nextActiveImage.addClass("image-shown").removeClass("image-hidden").css("z-index", 20);
-        $(".carousel-inner img").not([currentActiveImage, nextActiveImage]).css("z-index", 1);
-        e.preventDefault();
-
-});
-
-    $(".previouslink").on("click", function(e){
-        var currentActiveImage = $(".image-shown");
-        var nextActiveImage = currentActiveImage.prev();
-
-        if(nextActiveImage.length == 0){
-            nextActiveImage= $(".carousel-inner img").last();
-        }
-
-        currentActiveImage.removeClass("image-shown").addClass("image-hidden").css("z-index", -10);
-        nextActiveImage.addClass("image-shown").removeClass("image-hidden").css("z-index", 20);
-        $(".carousel-inner img").not([currentActiveImage, nextActiveImage]).css("z-index", 1);
-        e.preventDefault();
-
-    });
-});
-</script>
-</body>
-
+      );
+    </script>
+  </body>
 </html>

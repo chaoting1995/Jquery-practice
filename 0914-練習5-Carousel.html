@@ -82,35 +82,8 @@
         </ul>
     </div>
     <script>
-
-        let auto_run = function () {
-            $('li').click(function () {
-                let num = $(this).index()
-                $('.img-wrap').css('left', `${num * -800}px`)
-                $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')
-            })
-            refresh();
-        }
-        let refresh = function () {
-            setTimeout(auto_run, 1000);
-        }
-        auto_run();
-
-
-
-                
-        // let recalculate = function () {
-        //     let counter = countdown(goal);
-        //     let time = `${counter[1]}小時 ${counter[2]}分 ${counter[3]}秒`
-        //     document.getElementById('timer').textContent = time;
-        //     refresh();
-        // }
-        // let refresh = function () {
-        //     setTimeout(recalculate, 1000);
-        // }
-        // recalculate();
-        
-        // hover，留白點點
+        // 1.輪播牆
+                // hover，留白點點
         // $('li').hover(function () {
         //     let num = $(this).index()
         //     $('.img-wrap').css('left', `${num * -800}px`)
@@ -122,6 +95,32 @@
         // $('.img-wrap').css('left',`${num*-800}px`)
         // $(this).css('background','rgb(255, 255, 255)').siblings().css('background','rgba(255, 255, 255, 0.397)')
         // })
+
+        // $('li').click(function () {
+        //     let num = $(this).index()
+        //     $('.img-wrap').css('left', `${num * -800}px`)
+        //     $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')})
+
+
+
+        // 2.auto run
+        $('li').hover(function () {
+            //點到第幾個白點，就顯示第幾張
+            let left = $(this).index()* -800
+            $('.img-wrap').css('left',left )
+            //點到第幾個白點，就顯示第幾個白點
+            $(this).addClass('this-slider-dots').siblings().removeClass('this-slider-dots')
+        })
+
+        let newIndex = 0;
+        let my_interval = setInterval(() => {
+            if( newIndex > 4) newIndex = 0;
+            $('.img-wrap').css('left',newIndex*-800);
+            newIndex++;
+        }, 1000);
+
+// 點擊白點時，清除interval
+// 讓auto_run的白點點與當前頁數一樣
     </script>
 </body>
 

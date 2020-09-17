@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<style>
+    body {
+        height: 300vh;
+    }
+
+    header {
+        height: 200px;
+    }
+
+    nav {
+        background-color: #faf;
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+
+    }
+
+    nav.fixed {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+</style>
+
+<body>
+
+    <header></header>
+    <nav class="nav"> I'm nav</nav>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // ● 效果: 製作捲動到一定超過選單高度時，選單會貼到畫面頂端
+        // ● 提示: 偵測 scroll event，判斷是否大於選單的位置後切換 css
+        // ● 利用 $('#element').offset().top; 可抓到位置再跟 scrollTop 比較判斷
+
+   
+      let navTop = $("nav").offset().top;
+
+      $(window).scroll(function () {
+        let scrollTop = $(this).scrollTop();
+
+        if (scrollTop >= navTop) {
+          $("nav").addClass("fixed");
+        } else {
+          $("nav").removeClass("fixed");
+        }
+      });
+    </script>
+</body>
+
+</html>

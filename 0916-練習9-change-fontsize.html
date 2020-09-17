@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .font_s {
+            font-size: 0.8rem;
+        }
+
+        .font_m {
+            font-size: 1rem;
+        }
+
+        .font_l {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="py-2 d-flex justify-content-end">
+            <div class="btn btn-info">S</div>
+            <div class="btn btn-info">M</div>
+            <div class="btn btn-info">L</div>
+        </div>
+
+        <h2>JQuery</h2>
+        <article>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic assumenda aperiam vitae harum alias sequi.
+                Facilis nesciunt qui molestiae doloremque sit magnam ullam, repellendus quas perferendis veniam rerum
+                suscipit aut.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus deserunt cumque similique dolor,
+                voluptas impedit sapiente, qui, culpa soluta officia quia alias! Repudiandae minima laboriosam ea
+                dolorum ut nesciunt unde.</p>
+        </article>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script>
+        // ●.css() - 設定 css
+        // ●.addClass() - 增加 class
+        // ●.removeClass() - 移除 class
+        // ●.toggleClass() - 動態切換 class
+        // ●.hasClass() - 判斷是否有某個 class
+
+        $('.btn').click(function () {
+            $(this).removeClass()
+            if ($(this).is(':contains("S")')) {
+                $('article').addClass('font_s')
+            }
+            if ($(this).is(':contains("M")')) {
+                $('article').addClass('font_m')
+            }
+            if ($(this).is(':contains("L")')) {
+                $('article').addClass('font_l')
+            }
+        })
+
+        // 老師作法
+        let remove_string = ''
+        $('.btn').click(function () {
+            $(this).removeClass(remove_string)
+            if ($(this).is(':contains("S")')) {
+                remove_string ='font_s'
+                $('article').addClass('font_s')
+            }
+            if ($(this).is(':contains("M")')) {
+                $('article').addClass('font_m')
+            }
+            if ($(this).is(':contains("L")')) {
+                $('article').addClass('font_l')
+            }
+        })
+
+    </script>
+</body>
+
+</html>
