@@ -12,9 +12,10 @@
         integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <style>
-        /* *{
-            border: 1px solid black;
-        } */
+        * {
+            /* outline: 1px solid #000; */
+        }
+
         .wrap {
             position: relative;
             width: 800px;
@@ -30,11 +31,6 @@
             height: 120px;
         }
 
-        .origin {
-            position: absolute;
-            top: 140px;
-            left: 340px;
-        }
 
         /* .origin_position */
 
@@ -93,12 +89,63 @@
             margin: 10px;
             margin-top: 50px;
         }
+        
+
 
         .circle-button {
             width: 50px;
             height: 50px;
             margin: 10px;
             margin-top: 50px;
+        }
+
+        #orangewhite {
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgb(233, 233, 233);
+        }
+
+        .white_circle {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            position: absolute;
+            left: 20px;
+            top: 20px;
+        }
+
+        #triblecolor {
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgb(233, 233, 233);
+        }
+
+        .orange_circle {
+            width: 50px;
+            height: 50px;
+            background-color: orange;
+            position: absolute;
+            left: 25px;
+            top: -20px;
+        }
+
+        .black_circle {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(83, 83, 83);
+            position: absolute;
+            left: -25px;
+            top: -20px;
+        }
+
+        .mute-select {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            margin-top: 50px;
+        }
+        .fa-volume-mute{
+            size: 9px;
         }
     </style>
 </head>
@@ -124,10 +171,17 @@
 
     <div class="container d-flex flex-wrap justify-content-center">
         <div class=" d-flex flex-wrap">
+            <!-- 改變貓咪外觀 -->
             <div class="color-select-area d-flex">
-                <div class="circle-button rounded-circle" style="background: rgb(187, 48, 48)"></div>
-                <div class="circle-button rounded-circle" style="background:rgb(187, 48, 48)"></div>
-                <div class="circle-button rounded-circle" style="background: rgb(187, 48, 48)"></div>
+                <div class="color-select rounded-circle" id="gray" style="background: rgb(161, 161, 161);"></div>
+                <div class="color-select rounded-circle" id="orangewhite" style="background: orange;">
+                    <div class="white_circle rounded-circle"></div>
+                </div>
+                <div class="color-select rounded-circle" id="triblecolor"
+                    style="background: whitesmoke;border:1px solid lightgray">
+                    <div class="orange_circle rounded-circle"></div>
+                    <div class="black_circle rounded-circle"></div>
+                </div>
             </div>
         </div>
         <!-- 方向鍵 -->
@@ -162,10 +216,14 @@
         </div>
         <div class=" d-flex flex-wrap">
             <div class="color-select-area d-flex">
-                <div class="color-select rounded-circle" id="black" style="background: dimgray;"></div>
+                <div class="color-select rounded-circle" id="black" style="background: rgb(70, 70, 70);"></div>
                 <div class="color-select rounded-circle" id="orange" style="background: orange;"></div>
                 <div class="color-select rounded-circle" id="white"
                     style="background: whitesmoke;border:1px solid lightgray"></div>
+                
+                <!-- 靜音  -->
+                <!-- <div class="mute-select rounded-circle"
+                    style="background: whitesmoke"><i class="fas fa-volume-mute"></i></div> -->
             </div>
         </div>
     </div>
@@ -263,10 +321,17 @@
 
         // 邊界與setinterval，是否衝突？
 
-        // 一鍵復原位置(沒用)
-        // $('.origin_position').click(function () {
-        //     $('.box').addClass('.origin')
-        // })
+
+        // 一鍵復原位置
+        // 滑鼠：：按鈕
+        $('.origin_position').click(function () {
+            $('.box').css('top', 140).css('left', 340);
+        })
+        // 鍵盤：空白鍵
+        $(document).on("keydown", function (e) {
+            let code = e.which;
+            if (code === 13||code === 32) $('.box').css('top', 140).css('left', 340);
+        });
 
         // 換貓咪顏色
         $('.color-select').click(function () {
@@ -274,7 +339,7 @@
             $('#cat').attr('src', `./img/${cat_color}cat.svg`)
         })
 
-        // 碰到貓草，顯示愛心，發出叫聲
+        // 範圍效果：碰到貓草，顯示愛心、發出叫聲
         let timeoutID1 = window.setInterval((() => {
             let newLeft = parseInt($(".box").css('left'));
             let newTop = parseInt($(".box").css('top'));
@@ -284,17 +349,34 @@
                     if (newTop > 140) {
                         if (newTop < 260) {
                             $(".talk").removeClass('hidden');
-                            let button_audio = new Audio('./audio/cat1b.mp3');
+                            let button_audio = new Audio('./audio/cat3a.mp3');
                             button_audio.play();
                         } else {
                             $(".talk").addClass('hidden');
                             button_audio = null;
-
                         }
                     }
                 }
             }
         }), move_speed);
+
+        // function collision($div1, $div2) {
+        //     var x1 = $div1.offset().left;
+        //     var y1 = $div1.offset().top;
+        //     var h1 = $div1.outerHeight(true);
+        //     var w1 = $div1.outerWidth(true);
+        //     var b1 = y1 + h1;
+        //     var r1 = x1 + w1;
+        //     var x2 = $div2.offset().left;
+        //     var y2 = $div2.offset().top;
+        //     var h2 = $div2.outerHeight(true);
+        //     var w2 = $div2.outerWidth(true);
+        //     var b2 = y2 + h2;
+        //     var r2 = x2 + w2;
+
+        //     if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+        //     return true;
+        // }
 
         // 循環撥放動畫
         let my_interval = setInterval(() => {
@@ -304,8 +386,12 @@
         }, 10);
 
 
+        // 走路有聲音
+        // 關靜音
+        // 靜音的外觀
+        // 走路方向
 
-
+        
 
     </script>
 </body>
