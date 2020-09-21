@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAT MOVE</title>
+    <title>CAT PUSH</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -23,12 +23,63 @@
             background-color: #ddd;
             border-radius: 10px;
             margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .table {
+            position: absolute;
+            top: 260px;
+            left: 0px;
+            width: 600px;
+            height: 60px;
+            background-color: rgb(241, 147, 85);
+            border-radius: 10px 10px 10px 10px;
+
+        }
+
+        .table_foot_a {
+            position: absolute;
+            top: 320px;
+            left: 50px;
+            width: 50px;
+            height: 80px;
+            background-color: rgb(241, 147, 85);
+        }
+
+        .table_foot_b {
+            position: absolute;
+            top: 320px;
+            left: 500px;
+            width: 50px;
+            height: 80px;
+            background-color: rgb(241, 147, 85);
+        }
+
+        .cup {
+            position: absolute;
+            top: 140px;
+            left: 240px;
+            width: 120px;
+            height: 120px;
+            background-color: rgb(255, 247, 228);
+            border-radius: 5px 5px 30px 30px;
+        }
+
+        .cup_ear {
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            width: 120px;
+            height: 80px;
+            border-radius: 60px;
+            border: 15px solid rgb(255, 247, 228);
+            transform: rotate(-40deg);
         }
 
         .box {
             position: absolute;
             top: 140px;
-            left: 340px;
+            left: 40px;
             width: 120px;
             height: 120px;
 
@@ -164,10 +215,23 @@
 
 <body>
     <div class="wrap  mx-auto">
-        <!-- 貓草 -->
+
+        <!-- 貓草
         <div class="catgrass">
             <img src="./img/catgrass.svg" alt="">
+        </div> -->
+
+        <!-- 桌子 -->
+        <div class="table"></div>
+        <div class="table_foot_a"></div>
+        <div class="table_foot_b"></div>
+
+        <!-- 杯子 -->
+        <div class="cup">
+            <div class="cup_ear"></div>
         </div>
+
+
 
         <!-- 貓 -->
         <div class="box">
@@ -310,9 +374,9 @@
             let code = e.which;
             // 左37 上38 右39 下40
             if (code === 37) { setIntervalMore('left', 0, '-'); $('.box').addClass('turn-left'); } //圖片左轉
-            else if (code === 38) setIntervalMore('top', 0, '-');
-            else if (code === 39) { setIntervalLess('left', 680, '+'); $('.box').removeClass('turn-left'); }//圖片右轉
-            else if (code === 40) setIntervalLess('top', 280, '+');
+            // else if (code === 38) setIntervalMore('top', 0, '-');
+            else if (code === 39) { setIntervalLess('left', 480, '+'); $('.box').removeClass('turn-left'); }//圖片右轉
+            // else if (code === 40) setIntervalLess('top', 280, '+');
         });
         $(document).on("keyup", function (e) {
             // console.log("event:", e);
@@ -327,12 +391,12 @@
 
         // 控制方向：滑鼠
         // 上
-        $('#up').mousedown(function () { setIntervalMore('top', 0, '-'); })
-        $('#up').mouseup(function () { clear(); })
+        // $('#up').mousedown(function () { setIntervalMore('top', 0, '-'); })
+        // $('#up').mouseup(function () { clear(); })
 
         // 下
-        $('#down').mousedown(function () { setIntervalLess('top', 280, '+'); })
-        $('#down').mouseup(function () { clear(); })
+        // $('#down').mousedown(function () { setIntervalLess('top', 280, '+'); })
+        // $('#down').mouseup(function () { clear(); })
 
         // 左
         $('#left').mousedown(function () { setIntervalMore('left', 0, '-'); })
@@ -341,7 +405,7 @@
         $('#left').mouseup(function () { clear(); })
 
         // 右
-        $('#right').mousedown(function () { setIntervalLess('left', 680, '+'); })
+        $('#right').mousedown(function () { setIntervalLess('left', 480, '+'); })
         // 圖片右轉
         $('#right').mousedown(function () { $('.box').removeClass('turn-left'); })
         $('#right').mouseup(function () { clear(); })
@@ -350,12 +414,12 @@
         // 一鍵復原位置
         // 滑鼠：：按鈕
         $('.origin_position').click(function () {
-            $('.box').css('top', 140).css('left', 340);
+            $('.box').css('top', 140).css('left', 40);
         })
         // 鍵盤：空白鍵
         $(document).on("keydown", function (e) {
             let code = e.which;
-            if (code === 13 || code === 32) $('.box').css('top', 140).css('left', 340);
+            if (code === 13 || code === 32) $('.box').css('top', 140).css('left', 40);
         });
 
         // 換貓咪顏色
@@ -367,7 +431,7 @@
 
 
         // 範圍效果：碰到貓草 → 1.顯示愛心、2.發出叫聲
-        let cat = $('.box');
+        // let cat = $('.box');
         let catgrass = $('.catgrass');
 
         // 1.顯示愛心
@@ -391,7 +455,6 @@
         cat_audio_frequency = 1500;
         // 重複叫聲
         let timeoutID2 = window.setInterval((() => {
-            console.log($('.volume').hasClass('fa-volume-off'));
             if ($('.volume').hasClass('fa-volume-off')) {
                 if (collision(cat, catgrass)) {
                     let cat_audio = new Audio('./audio/cat3a.mp3');
@@ -418,27 +481,38 @@
             return true;
         }
 
-        // // 走路聲
-        // // 走路頻率
-        // let walk_audio_frequency = 1500;
-        // cat_audio_frequency
-        // let timeoutID3 = window.setInterval((() => {
+        // 推杯子
+        let cat = $('.box');
+        let cup = $('.cup');
+        let timeoutID4 = window.setInterval((() => {
+            if (collision(cat, cup)) {
+                $(".cup").css('left', `+=${move_distance}`);
+                if ($('.volume').hasClass('fa-volume-off')) {
+                    if (collision(cat, cup)) {
+                        let cat_audio = new Audio('./audio/cat3a.mp3');
+                        // cat_audio.play();
+                    }
+                }
+            }
+        }), move_speed);
 
-        //     let walk_audio = new Audio('./audio/walking_in_a_house2.mp3');
-        //     $(document).on("keydown", function (e) {
-        //         let code = e.which;
-        //         // 左37 上38 右39 下40
-        //         if ($('.volume').hasClass('fa-volume-off')) {
-        //             if (code === 37) walk_audio.play();
-        //             else if (code === 38) walk_audio.play();
-        //             else if (code === 39) walk_audio.play();
-        //             else if (code === 40) walk_audio.play();
-        //             else walk_audio.pause();
-        //         }
-        //     });
-        // }), walk_audio_frequency);
+        // 杯子掉落
+        let w2 = $('.table').outerWidth(true);
+        let x2 = $('.table').offset().left
+        let r2 = x2 + w2;
+        let timeoutID5 = window.setInterval((() => {
+            console.log($('.cup').offset().left)
+            if ($('.cup').offset().left > r2 && $('.cup').offset().top < 500) {
+                let break_audio = new Audio('http://sxl.yinxiao.org/sxshare/sesf1708281118520/freesound/soundeffects_52177181506102357452733318.mp3');
+                break_audio.play();
+                $(".cup").css('top', `+=15`);
+                
+            };
+        }), move_speed);
 
-        //靜音切換
+
+
+        // 靜音切換
         $('.mute-select').click(function () {
             $('.volume').toggleClass('fa-volume-off')
             $('.volume').toggleClass('fa-volume-mute')
