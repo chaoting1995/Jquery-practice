@@ -21,6 +21,8 @@
             width: 800px;
             height: 400px;
             background-color: #ddd;
+            border-radius: 10px;
+            margin-top: 20px;
         }
 
         .box {
@@ -29,8 +31,12 @@
             left: 340px;
             width: 120px;
             height: 120px;
+
         }
 
+        .turn-left {
+            transform: scaleX(-1);
+        }
 
         /* .origin_position */
 
@@ -89,7 +95,7 @@
             margin: 10px;
             margin-top: 50px;
         }
-        
+
 
 
         .circle-button {
@@ -114,7 +120,7 @@
             top: 20px;
         }
 
-        #triblecolor {
+        #trible {
             overflow: hidden;
             position: relative;
             border: 1px solid rgb(233, 233, 233);
@@ -143,9 +149,15 @@
             height: 50px;
             margin: 10px;
             margin-top: 50px;
+            background-color: rgb(238, 237, 237);
         }
-        .fa-volume-mute{
-            size: 9px;
+
+        .mute-select:hover {
+            background-color: rgb(212, 212, 212);
+        }
+
+        .volume {
+            font-size: 30px;
         }
     </style>
 </head>
@@ -165,7 +177,7 @@
                 <img class="heart" src="./img/heart.svg" alt="">
             </div>
             <!-- 貓圖 -->
-            <img id="cat" src="./img/orangecat.svg" alt="">
+            <img id="cat" src="./img/triblecat.svg" alt="">
         </div>
     </div>
 
@@ -173,11 +185,14 @@
         <div class=" d-flex flex-wrap">
             <!-- 改變貓咪外觀 -->
             <div class="color-select-area d-flex">
+                <!-- 灰貓 -->
                 <div class="color-select rounded-circle" id="gray" style="background: rgb(161, 161, 161);"></div>
+                <!-- 橘背白肚 -->
                 <div class="color-select rounded-circle" id="orangewhite" style="background: orange;">
                     <div class="white_circle rounded-circle"></div>
                 </div>
-                <div class="color-select rounded-circle" id="triblecolor"
+                <!-- 三花 -->
+                <div class="color-select rounded-circle" id="trible"
                     style="background: whitesmoke;border:1px solid lightgray">
                     <div class="orange_circle rounded-circle"></div>
                     <div class="black_circle rounded-circle"></div>
@@ -215,15 +230,20 @@
 
         </div>
         <div class=" d-flex flex-wrap">
+            <!-- 改變貓咪外觀 -->
             <div class="color-select-area d-flex">
+                <!-- 黑貓 -->
                 <div class="color-select rounded-circle" id="black" style="background: rgb(70, 70, 70);"></div>
+                <!-- 橘貓 -->
                 <div class="color-select rounded-circle" id="orange" style="background: orange;"></div>
+                <!-- 白貓 -->
                 <div class="color-select rounded-circle" id="white"
                     style="background: whitesmoke;border:1px solid lightgray"></div>
-                
+
                 <!-- 靜音  -->
-                <!-- <div class="mute-select rounded-circle"
-                    style="background: whitesmoke"><i class="fas fa-volume-mute"></i></div> -->
+                <div class="mute-select rounded-circle d-flex justify-content-center align-items-center"><i
+                        class="fas volume fa-volume-off"></i></div>
+
             </div>
         </div>
     </div>
@@ -290,8 +310,9 @@
             let code = e.which;
             // 左37 上38 右39 下40
             if (code === 37) setIntervalMore('left', 0, '-');
+            if (code === 37) $('.box').addClass('turn-left'); //圖片左轉
             else if (code === 38) setIntervalMore('top', 0, '-');
-            else if (code === 39) setIntervalLess('left', 680, '+');
+            else if (code === 39) { setIntervalLess('left', 680, '+'); $('.box').removeClass('turn-left'); }//圖片右轉
             else if (code === 40) setIntervalLess('top', 280, '+');
         });
         $(document).on("keyup", function (e) {
@@ -309,17 +330,22 @@
         // 上
         $('#up').mousedown(function () { setIntervalMore('top', 0, '-'); })
         $('#up').mouseup(function () { clear(); })
+
         // 下
         $('#down').mousedown(function () { setIntervalLess('top', 280, '+'); })
         $('#down').mouseup(function () { clear(); })
+
         // 左
         $('#left').mousedown(function () { setIntervalMore('left', 0, '-'); })
+        // 圖片左轉
+        $('#left').mousedown(function () { $('.box').addClass('turn-left'); })
         $('#left').mouseup(function () { clear(); })
+
         // 右
         $('#right').mousedown(function () { setIntervalLess('left', 680, '+'); })
+        // 圖片右轉
+        $('#right').mousedown(function () { $('.box').removeClass('turn-left'); })
         $('#right').mouseup(function () { clear(); })
-
-        // 邊界與setinterval，是否衝突？
 
 
         // 一鍵復原位置
@@ -330,7 +356,7 @@
         // 鍵盤：空白鍵
         $(document).on("keydown", function (e) {
             let code = e.which;
-            if (code === 13||code === 32) $('.box').css('top', 140).css('left', 340);
+            if (code === 13 || code === 32) $('.box').css('top', 140).css('left', 340);
         });
 
         // 換貓咪顏色
@@ -339,44 +365,20 @@
             $('#cat').attr('src', `./img/${cat_color}cat.svg`)
         })
 
-        // 範圍效果：碰到貓草，顯示愛心、發出叫聲
-        let timeoutID1 = window.setInterval((() => {
-            let newLeft = parseInt($(".box").css('left'));
-            let newTop = parseInt($(".box").css('top'));
 
-            if (newLeft > 140) {
-                if (newLeft < 260) {
-                    if (newTop > 140) {
-                        if (newTop < 260) {
-                            $(".talk").removeClass('hidden');
-                            let button_audio = new Audio('./audio/cat3a.mp3');
-                            button_audio.play();
-                        } else {
-                            $(".talk").addClass('hidden');
-                            button_audio = null;
-                        }
-                    }
-                }
+
+        // 範圍效果：碰到貓草 → 1.顯示愛心、2.發出叫聲
+        let cat = $('.box');
+        let catgrass = $('.catgrass');
+
+        // 1.顯示愛心
+        let timeoutID1 = window.setInterval((() => {
+            if (collision(cat, catgrass)) {
+                $(".talk").removeClass('hidden');
+            } else {
+                $(".talk").addClass('hidden');
             }
         }), move_speed);
-
-        // function collision($div1, $div2) {
-        //     var x1 = $div1.offset().left;
-        //     var y1 = $div1.offset().top;
-        //     var h1 = $div1.outerHeight(true);
-        //     var w1 = $div1.outerWidth(true);
-        //     var b1 = y1 + h1;
-        //     var r1 = x1 + w1;
-        //     var x2 = $div2.offset().left;
-        //     var y2 = $div2.offset().top;
-        //     var h2 = $div2.outerHeight(true);
-        //     var w2 = $div2.outerWidth(true);
-        //     var b2 = y2 + h2;
-        //     var r2 = x2 + w2;
-
-        //     if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
-        //     return true;
-        // }
 
         // 循環撥放動畫
         let my_interval = setInterval(() => {
@@ -385,13 +387,55 @@
             });
         }, 10);
 
+        // 2.發出叫聲
+        // 貓叫頻率
+        cat_audio_frequency = 1500;
+        // 重複叫聲
+        let timeoutID2 = window.setInterval((() => {
+            console.log($('.volume').hasClass('fa-volume-off'));
+            if($('.volume').hasClass('fa-volume-off')){
+                if (collision(cat, catgrass)){ 
+                let cat_audio = new Audio('./audio/cat3a.mp3');
+                cat_audio.play();}
+                }
+            // cat_audio.loop = true
+        }), cat_audio_frequency);
+
+        function collision($div1, $div2) {
+            var x1 = $div1.offset().left;
+            var y1 = $div1.offset().top;
+            var h1 = $div1.outerHeight(true);
+            var w1 = $div1.outerWidth(true);
+            var b1 = y1 + h1;
+            var r1 = x1 + w1;
+            var x2 = $div2.offset().left;
+            var y2 = $div2.offset().top;
+            var h2 = $div2.outerHeight(true);
+            var w2 = $div2.outerWidth(true);
+            var b2 = y2 + h2;
+            var r2 = x2 + w2;
+
+            if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) return false;
+            return true;
+        }
+
+        //靜音切換
+        $('.mute-select').click(function () { 
+            $('.volume').toggleClass('fa-volume-off')
+            $('.volume').toggleClass('fa-volume-mute')
+
+        })
+
 
         // 走路有聲音
         // 關靜音
-        // 靜音的外觀
-        // 走路方向
 
-        
+        // 推杯
+        // 隨機罐罐
+        // 餵食罐罐
+
+
+
 
     </script>
 </body>
