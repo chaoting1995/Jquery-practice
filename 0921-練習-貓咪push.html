@@ -501,14 +501,18 @@
         let x2 = $('.table').offset().left
         let r2 = x2 + w2;
         let timeoutID5 = window.setInterval((() => {
-            console.log($('.cup').offset().left)
-            if ($('.cup').offset().left > r2 && $('.cup').offset().top < 500) {
-                let break_audio = new Audio('http://sxl.yinxiao.org/sxshare/sesf1708281118520/freesound/soundeffects_52177181506102357452733318.mp3');
-                break_audio.play();
+            if ($('.cup').offset().left > r2 && $('.cup').offset().top <= 500) {
                 $(".cup").css('top', `+=15`);
-                
             };
         }), move_speed);
+        
+        let timeoutID6 = window.setInterval((() => {
+            if ($('.cup').offset().left > r2 && $('.cup').offset().top <= 500) {
+                if ($('.volume').hasClass('fa-volume-off')) {
+                let break_audio = new Audio('http://sxl.yinxiao.org/sxshare/sesf1708281118520/freesound/soundeffects_52177181506102357452733318.mp3');
+                break_audio.play();}
+            };
+        }), 2000);
 
 
 
