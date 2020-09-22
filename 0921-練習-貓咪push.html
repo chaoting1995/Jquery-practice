@@ -375,7 +375,7 @@
             // 左37 上38 右39 下40
             if (code === 37) { setIntervalMore('left', 0, '-'); $('.box').addClass('turn-left'); } //圖片左轉
             // else if (code === 38) setIntervalMore('top', 0, '-');
-            else if (code === 39) { setIntervalLess('left', 480, '+'); $('.box').removeClass('turn-left'); }//圖片右轉
+            else if (code === 39) { setIntervalLess('left', 490, '+'); $('.box').removeClass('turn-left'); }//圖片右轉
             // else if (code === 40) setIntervalLess('top', 280, '+');
         });
         $(document).on("keyup", function (e) {
@@ -386,7 +386,6 @@
             else if (code === 38) clear();
             else if (code === 39) clear();
             else if (code === 40) clear();
-
         });
 
         // 控制方向：滑鼠
@@ -405,7 +404,7 @@
         $('#left').mouseup(function () { clear(); })
 
         // 右
-        $('#right').mousedown(function () { setIntervalLess('left', 480, '+'); })
+        $('#right').mousedown(function () { setIntervalLess('left', 490, '+'); })
         // 圖片右轉
         $('#right').mousedown(function () { $('.box').removeClass('turn-left'); })
         $('#right').mouseup(function () { clear(); })
@@ -415,7 +414,10 @@
         // 滑鼠：：按鈕
         $('.origin_position').click(function () {
             $('.box').css('top', 140).css('left', 40);
+            $('.cup').css('top', 140).css('left', 240);
         })
+
+
         // 鍵盤：空白鍵
         $(document).on("keydown", function (e) {
             let code = e.which;
