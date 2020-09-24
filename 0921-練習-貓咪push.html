@@ -421,7 +421,7 @@
         // 鍵盤：空白鍵
         $(document).on("keydown", function (e) {
             let code = e.which;
-            if (code === 13 || code === 32) $('.box').css('top', 140).css('left', 40);
+            if (code === 13 || code === 32) { $('.box').css('top', 140).css('left', 40); $('.cup').css('top', 140).css('left', 240); }
         });
 
         // 換貓咪顏色
@@ -432,18 +432,18 @@
 
 
 
-        // 範圍效果：碰到貓草 → 1.顯示愛心、2.發出叫聲
+        // 範圍效果：碰到貓草 → 1.顯示愛心
         // let cat = $('.box');
         let catgrass = $('.catgrass');
 
         // 1.顯示愛心
-        let timeoutID1 = window.setInterval((() => {
-            if (collision(cat, catgrass)) {
-                $(".talk").removeClass('hidden');
-            } else {
-                $(".talk").addClass('hidden');
-            }
-        }), move_speed);
+        // let timeoutID1 = window.setInterval((() => {
+        //     if (collision(cat, catgrass)) {
+        //         $(".talk").removeClass('hidden');
+        //     } else {
+        //         $(".talk").addClass('hidden');
+        //     }
+        // }), move_speed);
 
         // 循環撥放talk動畫
         let my_interval = setInterval(() => {
@@ -451,19 +451,6 @@
                 $(this).removeClass('animate__wobble');
             });
         }, 10);
-
-        // 2.發出叫聲
-        // 貓叫頻率
-        cat_audio_frequency = 1500;
-        // 重複叫聲
-        let timeoutID2 = window.setInterval((() => {
-            if ($('.volume').hasClass('fa-volume-off')) {
-                if (collision(cat, catgrass)) {
-                    let cat_audio = new Audio('./audio/cat3a.mp3');
-                    cat_audio.play();
-                }
-            }
-        }), cat_audio_frequency);
 
         function collision($div1, $div2) {
             var x1 = $div1.offset().left;
@@ -502,16 +489,25 @@
         let w2 = $('.table').outerWidth(true);
         let x2 = $('.table').offset().left
         let r2 = x2 + w2;
+        // console.log(w2)
+        // console.log(x2)
+        // console.log(r2)
+
+        // && $('.cup').offset().top <= 500
         let timeoutID5 = window.setInterval((() => {
-            if ($('.cup').offset().left > r2 && $('.cup').offset().top <= 500) {
+            if ($('.cup').offset().left >= r2) {
                 $(".cup").css('top', `+=15`);
             };
         }), move_speed);
+
         let timeoutID6 = window.setInterval((() => {
-            if ($('.cup').offset().left > r2 && $('.cup').offset().top <= 500) {
+            if ($('.cup').offset().left == r2) {
                 if ($('.volume').hasClass('fa-volume-off')) {
-                let break_audio = new Audio('http://sxl.yinxiao.org/sxshare/sesf1708281118520/freesound/soundeffects_52177181506102357452733318.mp3');
-                break_audio.play();}
+                    console.log($(this))
+                    let break_audio = new Audio('http://sxl.yinxiao.org/sxshare/sesf1708281118520/freesound/soundeffects_52177181506102357452733318.mp3');
+                    break_audio.play();
+
+                }
             };
         }), 2000);
 
